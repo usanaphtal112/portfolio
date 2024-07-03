@@ -1,0 +1,36 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row align-items-center mt-5">
+    <div class="col-lg-6">
+        <div class="greeting mb-2">Hi, I'm Naphtal 👋</div>
+        <h1 class="display-4 fw-bold mb-4">
+            <span class="highlight">Product Designer</span> &<br>
+            <span class="highlight">Front-End Engineer</span>
+        </h1>
+        <p class="lead mb-4">
+            With over 4+ years of molding the digital landscape, I've taken abstract ideas from startups to platforms serving millions and transformed them into tangible, user-friendly solutions. Always ready to connect the dots between your vision and the world's screen.
+        </p>
+        <div class="mb-4">
+            Currently working at <span class="highlight">Noble</span>.
+        </div>
+        <div class="mb-4">
+            <button class="btn btn-primary me-2">Hire me</button>
+            <button class="btn btn-outline-light">View Projects</button>
+        </div>
+        <div class="social-icons">
+            <a href="#" class="me-3"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="me-3"><i class="fab fa-upwork"></i></a>
+            <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="me-3"><i class="far fa-paper-plane"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-6 text-center text-lg-end mt-4 mt-lg-0">
+        <img src="{% static 'images/myprofile.jpg' %}" alt="Naphtal USABYUWERA" class="img-fluid rounded">
+    </div>
+</div>
+<div class="chat-button">
+    <i class="far fa-comment-dots"></i>
+</div>
+{% endblock %}
