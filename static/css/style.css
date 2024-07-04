@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #2ecc71;
+    --primary-color: #007bff;
     --secondary-color: #2c3e50;
     --text-color: #ffffff;
     --background-color: #1a2234;
@@ -29,8 +29,8 @@ body {
 }
 
 .btn-primary:hover {
-    background-color: #27ae60;
-    border-color: #27ae60;
+    background-color: #007bff;
+    border-color: #007bff;
 }
 
 .highlight {
