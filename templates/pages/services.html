@@ -1,0 +1,125 @@
+{% load static %}
+
+<style>
+    .service-spectrum {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+        color: #333;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .service-spectrum h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+    }
+
+    .service-spectrum p {
+        font-size: 1.2em;
+        color: #666;
+    }
+
+    .services {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+
+    .service {
+        background-color: #fff;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+        flex-basis: calc(33.333% - 20px);
+    }
+
+    .service:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .service img {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 10px;
+        transition: transform 0.3s;
+    }
+
+    .service:hover img {
+        transform: scale(1.1);
+    }
+
+    .service h2 {
+        color: #4CAF50;
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    .service p {
+        color: #666;
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    .service a {
+        color: #4CAF50;
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+        transition: color 0.3s;
+    }
+
+    .service a:hover {
+        color: #388E3C;
+    }
+</style>
+
+<div class="service-spectrum">
+    <h1>Service Spectrum</h1>
+    <p>Transforming complex challenges into innovative, scalable solutions at the cutting edge of technology.</p>
+
+    <div class="services">
+        <div class="service">
+            <img src="{% static 'images/ai_web.png' %}" alt="AI-Powered Web Solutions">
+            <h2>AI-Powered Web Solutions</h2>
+            <p>Integrating advanced AI capabilities into web solutions to enhance functionality and user experience.</p>
+            <a href="#">View Projects &gt;</a>
+        </div>
+        <div class="service">
+            <img src="{% static 'images/intelligent_automation.png' %}" alt="Intelligent Automation Systems">
+            <h2>Intelligent Automation Systems</h2>
+            <p>Automating workflows using AI and ML to increase efficiency and reduce manual tasks.</p>
+            <a href="#">View Projects &gt;</a>
+        </div>
+        <div class="service">
+            <img src="{% static 'images/data_driven.png' %}" alt="Data-Driven Decision Making">
+            <h2>Data-Driven Decision Making</h2>
+            <p>Leveraging data analytics to provide actionable insights and drive business decisions.</p>
+            <a href="#">View Projects &gt;</a>
+        </div>
+        <div class="service">
+            <img src="{% static 'images/scalable_saas.png' %}" alt="Scalable SaaS Development">
+            <h2>Scalable SaaS Development</h2>
+            <p>Building robust, cloud-native software-as-a-service platforms tailored to your needs.</p>
+            <a href="#">View Projects &gt;</a>
+        </div>
+        <div class="service">
+            <img src="{% static 'images/custom_ai.png' %}" alt="Custom AI Model Creation">
+            <h2>Custom AI Model Creation</h2>
+            <p>Designing and developing AI models tailored to address specific business challenges.</p>
+            <a href="#">View Projects &gt;</a>
+        </div>
+        <div class="service">
+            <img src="{% static 'images/web_scraping.png' %}" alt="Advanced Web Scraping & Data Extraction">
+            <h2>Advanced Web Scraping & Data Extraction</h2>
+            <p>Ethically extracting web data at scale to support data-driven strategies.</p>
+            <a href="#">View Projects &gt;</a>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/service.js' %}"></script>

@@ -1,0 +1,99 @@
+{% load static %}
+
+<style>
+    .hero-section{
+        margin-top: 150px;
+    }
+    .greeting {
+        font-size: 2rem;
+        color: #333;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .highlight {
+        color: #007bff;
+        font-size: 2.5rem;
+    }
+    .social-icons a {
+        color: #555;
+        font-size: 2rem;
+        transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+        color: #007bff;
+    }
+    .chat-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        padding: 15px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .chat-button:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
+    }
+
+    .btn-primary, .btn-outline-light {
+        font-size: 1.25rem;
+        padding: 0.75rem 1.5rem;
+        transition: transform 0.3s ease;
+    }
+    .btn-primary:hover, .btn-outline-light:hover {
+        transform: scale(1.1);
+    }
+
+    .fadeIn {
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    .lead {
+        font-size: 1.25rem;
+        color: #555;
+    }
+
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+</style>
+<div class="hero-section" id="hero-section">
+    <div class="brainContainer"></div>
+    <div class="row align-items-center mt-5 fadeIn">
+        <div class="col-lg-6">
+            <div class="greeting mb-2">Hi, I'm Naphtal 👋</div>
+            <h1 class="display-4 fw-bold mb-4">
+                <span class="highlight">AI, ML Engineer</span> &<br>
+                <span class="highlight">Full Stack Web Developer</span>
+            </h1>
+            <p class="lead mb-4">
+                With over 4+ years of experience in AI and ML engineering, coupled with full stack web development, I've transformed complex challenges into innovative, scalable solutions. Always ready to bridge the gap between cutting-edge technology and user-friendly digital experiences.
+            </p>
+            <div class="mb-4">
+                {% comment %} Currently working at <span class="highlight">Noble</span>. {% endcomment %}
+            </div>
+            <div class="mb-4">
+                <button class="btn btn-primary me-2">Hire me</button>
+                <button class="btn btn-outline-light">View Projects</button>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/usa-naphtal/" class="me-3"><i class="bi bi-linkedin"></i></a>
+                <a href="https://www.facebook.com/Naphtal112/" class="me-3"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/naphtal112/" class="me-3"><i class="bi bi-instagram"></i></a>
+                <a href="https://t.me/awisdomman" class="me-3"><i class="bi bi-telegram"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-end mt-4 mt-lg-0">
+            <img src="{% static 'images/myprofile.png' %}" alt="Naphtal USABYUWERA" class="img-fluid rounded">
+        </div>
+    </div>
+</div>
+{% block extra_js %}
+    <script src="{% static 'js/brain.js' %}"></script>
+{% endblock %}

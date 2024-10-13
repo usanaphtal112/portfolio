@@ -1,0 +1,38 @@
+{% extends 'components/base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+
+</style>
+<div class="container mb-5">
+    {% include "pages/hero.html" %}
+</div>
+
+<div class="container mt-5">
+    {% include "pages/services.html" %}
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="mt-5 mb-4 text-center">Featured Projects</h2>
+        </div>
+    </div>
+    {% for project in projectsData %}
+    <div class="project-container {% if forloop.counter|divisibleby:2 %}reverse{% endif %}">
+        <div class="project-info">
+            <h1>{{ project.title }} - {{ project.type }}</h1>
+            <p>{{ project.description }}</p>
+            <a href="{{ project.case_study_url }}" class="btn btn-primary">View Case Study</a>
+        </div>
+        <div class="project-image">
+            <img src="{% static project.image %}" alt="{{ project.title }} screenshot">
+        </div>
+    </div>
+    {% endfor %}
+    <div class="view-more-projects">
+        <a href="{% url 'project_work' %}" class="btn btn-secondary">View More Projects</a>
+    </div>
+</div>
+{% endblock %}

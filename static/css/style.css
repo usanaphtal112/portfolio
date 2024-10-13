@@ -10,6 +10,10 @@ body {
     color: var(--text-color);
 }
 
+.navbar {
+    background-color: #1a2234
+}
+
 .navbar-brand {
     color: var(--primary-color) !important;
     font-weight: bold;
@@ -75,4 +79,41 @@ body {
     .btn-primary {
         margin-top: 1rem;
     }
+}
+
+/* --------------------------------------------splash screen---------------------------------- */
+
+.splash-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    animation: fadeIn 1.5s ease-in-out, fadeOut 1.5s ease-in-out 1.5s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Main Content Styles */
+.main-content {
+    display: none; /* Initially hide the main content */
 }

@@ -1,0 +1,66 @@
+#chat2 {
+    position: fixed;
+    bottom: 80px; /* Increase distance from the bottom to avoid overlap with the chat button */
+    right: 20px;
+    width: 400px; /* Increased width */
+    max-height: 100vh; /* Limit height for better scrolling */
+    overflow-y: auto; /* Enable scrolling if content exceeds max-height */
+    background-color: white;
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 1050; /* Ensure it's above other content */
+    display: none; /* Initially hidden */
+}
+
+#chat2.show {
+    display: block; /* Show the chat popup when needed */
+}
+
+.chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.chat-button i {
+    font-size: 24px;
+}
+
+#chat2 .card-header {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#chat2 .card-body {
+    padding: 15px;
+}
+
+#chat2 .card-footer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+#chat2 .card-footer input {
+    flex: 1;
+    margin-right: 10px;
+    border-radius: 20px;
+}
+
+#chat2 .card-footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 18px;
+}

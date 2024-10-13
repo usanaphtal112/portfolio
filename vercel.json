@@ -2,9 +2,9 @@
     "version": 2,
     "builds": [
       {
-        "src": "eplusmsport/wsgi.py",
+        "src": "portfolio_project/wsgi.py",
         "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.11" }
+        "config": { "maxLambdaSize": "15mb", "runtime": "python3.12" }
       },
       {
         "src": "build_files.sh",
@@ -21,7 +21,7 @@
       },
       {
         "src": "/(.*)",
-        "dest": "eplusmsport/wsgi.py"
+        "dest": "portfolio_project/wsgi.py"
       }
     ]
   }

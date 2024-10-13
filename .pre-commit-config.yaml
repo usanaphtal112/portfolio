@@ -28,5 +28,4 @@ repos:
         args: [
             # Only check for unused imported modules
             "--select=F401",
-            "--exclude=settings/prod.py,local.py,base.py",
           ]

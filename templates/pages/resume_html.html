@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Resume - Naphtal USABYUWERA</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            font-size: 10pt;
+        }
+        .container {
+            max-width: 210mm;
+            padding: 5mm;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 20pt;
+            margin-bottom: 5px;
+            font-weight: 800;
+        }
+        h2 {
+            font-size: 12pt;
+            color: #007bff;
+            border-bottom: 1px solid #007bff;
+            padding-bottom: 3px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .section {
+            margin-bottom: 10px;
+        }
+        .skill-category {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            margin-bottom: 5px;
+        }
+        .skill-item {
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 8pt;
+        }
+        #downloadBtn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .reference {
+            margin-bottom: 5px;
+            padding: 5px;
+            background-color: #f0f0f0;
+            border-radius: 3px;
+        }
+        .reference strong {
+            font-weight: bolder;
+        }
+        .volunteering-section {
+            margin-top: 15px;
+            clear: both;
+        }
+        .volunteer-columns {
+            display: flex;
+            justify-content: space-between;
+        }
+        .volunteer-column {
+            width: 48%;
+        }
+        .volunteer-item {
+            margin-bottom: 5px;
+        }
+        .email {
+            color: #6c757d;
+            text-decoration: underline;
+            font-style: italic;
+        }
+        .education-item {
+            margin-bottom: 3px;
+        }
+        .education-item h5 {
+            margin-bottom: 0;
+            font-size: 10pt;
+            font-weight: bolder;
+        }
+        h5 {
+            font-weight: 400;
+            font-size: 10pt;
+        }
+        .education-item p {
+            margin-bottom: 0;
+            font-style: italic;
+            font-size: 8pt;
+        }
+        .compact-list {
+            padding-left: 15px;
+            margin-bottom: 3px;
+        }
+        .compact-list li {
+            margin-bottom: 1px;
+        }
+        .contact-info {
+            font-size: 9pt;
+        }
+        .contact-info i {
+            width: 15px;
+            text-align: center;
+            margin-right: 5px;
+        }
+        .description{
+            font-size: 9pt;
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+                padding: 0;
+            }
+            #downloadBtn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="downloadBtn" class="btn btn-primary" onclick="generatePDF()">Download PDF</button>
+
+    <div class="container" id="resume">
+        <!-- Header -->
+        <header class="text-center">
+            <h1>Naphtal USABYUWERA</h1>
+            <p class="mb-0">Data Science & Artificial Intelligence</p>
+            <div class="contact-info">
+                <p class="mb-0"><i class="fas fa-envelope"></i>usa.naphtal@gmail.com | <i class="fas fa-phone"></i>(+91) 8341618150 | <i class="fas fa-map-marker-alt"></i>Vijayawada, India</p>
+                <p class="mb-0"><i class="fab fa-linkedin"></i>linkedin.com/in/usa-naphtal | <i class="fab fa-github"></i>github.com/usanaphtal112 | <i class="fas fa-globe"></i>naphtal.tech</p>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="col-8">
+                <!-- Profile -->
+                <section class="section">
+                    <h2>Profile</h2>
+                    <p class="description">Data Science & Artificial Intelligence enthusiast with a strong foundation in research and a proven track record of developing impactful machine learning models through data-driven insights. Skilled in Python , and deep learning frameworks like TensorFlow and PyTorch. Experienced in conducting research on cutting-edge algorithms, optimizing neural networks, and applying AI techniques to real-world challenges. Adept in full-stack development with Django and committed to leveraging innovative problem-solving and advanced analytics for meaningful outcomes. Eager to collaborate in research-oriented environments and contribute to advancements in the field.</p>
+                </section>
+
+                <!-- Education -->
+                <section class="section">
+                    <h2>Education</h2>
+                    <div class="education-item">
+                        <h5>KL University - B.Tech in Artificial Intelligence And Data Science</h5>
+                        <p>Vijayawada, India • Expected Graduation: May/2025</p>
+                    </div>
+                    <div class="education-item">
+                        <h5>Groupe Scolaire Officiel De Butare(Indatwa n'Inkesha School) - High School</h5>
+                        <p>Butare, Rwanda • November/2018</p>
+                    </div>
+                </section>
+
+                <!-- Experience -->
+                <section class="section">
+                    <h2>Experience</h2>
+                    <h5 class="mb-1"><b>Data Analyst Intern</b></h5>
+                    <p class="mb-1"><em><small>Mentored Minds, Vijayawada, India | April 2023 - June 2023</small></em></p>
+                    <ul class="compact-list description">
+                        <li>Conducted consumer data analysis on products to assist with promotional campaigns using Machine Learning.</li>
+                        <li>Performed data visualization using Tableau.</li>
+                        <li>Cleaned and validated existing spreadsheets to promote robust data management, resulting in accurate data analysis and entry.</li>
+                        <li>Identified, analyzed, and interpreted trends in complex data sets using visualization and machine learning techniques.</li>
+                    </ul>
+                </section>
+
+                <!-- Projects -->
+                <section class="section">
+                    <h2>Personal Projects</h2>
+                    <h5 class="mb-2"><b>Image Classification with CNN</b></h5>
+                    <p class="mb-2 description">Implemented image classification and face recognition using CNN and other pretrained models (ResNet50, VGG16, VGG19, InceptionResNetV2, InceptionV3), showcasing proficiency in deep learning and computer vision.</p>
+
+                    <h5 class="mb-2"><b>Deep Learning Multimodal Portfolio</b></h5>
+                    <p class="mb-2 description">Integrated a comprehensive web application using Django, incorporating various deep learning models (CNN, RNN, LSTM, GRU) for prediction and analysis, including transfer learning in computer vision and sequential analysis.</p>
+
+                    <h5 class="mb-2"><b>E-Commerce API with Django Rest Framework</b></h5>
+                    <p class="mb-2 description">Designed and implemented a streamlined E-commerce API using Django Rest Framework, enabling efficient product management and secure user transactions.</p>
+                </section>
+
+                <section class="section volunteering-section">
+                    <h2>Volunteering Activities</h2>
+                    <div class="volunteer-columns">
+                        <div class="volunteer-column">
+                            <div class="volunteer-item">
+                                <strong>Non-Violence Club</strong>
+                                <p class="description">Organized and led anti-violence campaigns promoting peace and awareness through Famille de Paix.</p>
+                            </div>
+                        </div>
+                        <div class="volunteer-column">
+                            <div class="volunteer-item">
+                                <strong>Urugerero Community Services</strong>
+                                <p class="description">Led initiatives in building community infrastructure, improving living standards for families.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <div class="col-4">
+                <!-- Skills -->
+                <section class="section">
+                    <h2>Skills and Tools</h2>
+                    <div class="skill-category">Programming</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">R</span>
+                        <span class="skill-item">HTML5/CSS/JS</span>
+                    </div>
+                    <div class="skill-category">Frameworks</div>
+                    <div class="skill-list">
+                        <span class="skill-item">scikit-learn</span>
+                        <span class="skill-item">TensorFlow</span>
+                        <span class="skill-item">PyTorch</span>
+                        <span class="skill-item">Django</span>
+                        <span class="skill-item">Django Rest Framework</span>
+                    </div>
+                    <div class="skill-category">Data Analysis</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Matplotlib</span>
+                        <span class="skill-item">Tableau</span>
+                        <span class="skill-item">Apache Spark</span>
+                        <span class="skill-item">Power BI</span>
+                        <span class="skill-item">Excel</span>
+
+                    </div>
+                    <div class="skill-category">Databases</div>
+                    <div class="skill-list">
+                        <span class="skill-item">PostgreSQL</span>
+                        <span class="skill-item">Redis</span>
+                    </div>
+                    <div class="skill-category">Other</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Machine Learning</span>
+                        <span class="skill-item">Deep Learning</span>
+                        <span class="skill-item">Statistical Modeling</span>
+                        <span class="skill-item">Data Visualization</span>
+                        <span class="skill-item">Image Processing</span>
+                        <span class="skill-item">React</span>
+                    </div>
+                </section>
+
+                <!-- Certifications -->
+                <section class="section">
+                    <h2>Certifications</h2>
+                    <ul class="compact-list description">
+                        <li>TensorFlow for AI, ML and Deep Learning</li>
+                        <li>Andela React Learning Certificate</li>
+                        <li>AWS Machine Learning Foundation</li>
+                    </ul>
+                </section>
+
+                <!-- Other Skills -->
+                <section class="section">
+                    <h2>Other Skills</h2>
+                    <ul class="compact-list description">
+                        <li>Hadoop</li>
+                        <li>Project Management</li>
+                        <li>Teamwork and Communication</li>
+                        <li>Time Management</li>
+                        <li>Problem Solving</li>
+                        <li>Leadership</li>
+                        <li>Creativity</li>
+                    </ul>
+                </section>
+
+                <!-- Languages -->
+                <section class="section">
+                    <h2>Languages</h2>
+                    <ul class="compact-list description">
+                        <li>English (Fluent)</li>
+                        <li>Kinyarwanda (Fluent)</li>
+                    </ul>
+                </section>
+                <!-- References -->
+                <section class="section">
+                    <h2>References</h2>
+
+                    <div class="reference">
+                        <strong>Dr. JAGJIT SINGH DHATTERWAL</strong> - Associate Professor, KL University<br>
+                        <a href="mailto:jsdhatterwal@kluniversity.in" class="email">jsdhatterwal@kluniversity.in</a>
+                    </div>
+                    <div class="reference">
+                        <strong>Mrs. S N Lakshmi Malluvalasa</strong> - Assistant Professor, KL University<br>
+                        <a href="mailto:sweacha.lakshmi@kluniversity.in" class="email">sweacha.lakshmi@kluniversity.in</a>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('p', 'pt', 'a4');
+            const element = document.getElementById('resume');
+
+            html2canvas(element, {
+                scale: 2, // Increase scale for better quality
+                useCORS: true,
+                logging: false
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const imgWidth = 595.28; // A4 width in pts
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+
+                // Add an invisible text layer for searchability and selectability
+                doc.setFont("helvetica");
+                doc.setFontSize(10);
+                element.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li, span').forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const text = el.innerText.trim();
+                    if (text) {
+                        doc.text(text, rect.left, rect.top, {
+                            renderingMode: 'invisible'
+                        });
+                    }
+                });
+
+                // Add metadata
+                doc.setProperties({
+                    title: 'Naphtal USABYUWERA Resume',
+                    subject: 'Resume',
+                    author: 'Naphtal USABYUWERA',
+                    keywords: 'resume, data science, artificial intelligence',
+                    creator: 'jsPDF'
+                });
+
+                // Save the PDF
+                doc.save('Naphtal_USABYUWERA_Resume.pdf');
+            });
+        }
+    </script>
+</body>
+</html>
