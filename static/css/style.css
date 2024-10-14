@@ -8,6 +8,9 @@
 body {
     background-color: var(--background-color);
     color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .navbar {
@@ -116,4 +119,18 @@ body {
 /* Main Content Styles */
 .main-content {
     display: none; /* Initially hide the main content */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+p, li {
+    font-weight: 400;
+}
+
+footer {
+    flex-shrink: 0;
+    padding: 20px 0;
 }
