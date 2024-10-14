@@ -1,99 +1,126 @@
 {% load static %}
-
 <style>
-    .hero-section{
-        margin-top: 150px;
+    .hero-section {
+        padding: 60px 0 50px; /* Reduced top padding */
+
     }
     .greeting {
         font-size: 2rem;
         color: #333;
         animation: fadeIn 1s ease-in-out;
     }
-
     .highlight {
         color: #007bff;
-        font-size: 2.5rem;
+        font-weight: 700;
     }
     .social-icons a {
         color: #555;
-        font-size: 2rem;
-        transition: color 0.3s ease;
+        font-size: 1.5rem;
+        margin-right: 15px;
+        transition: color 0.3s ease, transform 0.3s ease;
     }
     .social-icons a:hover {
         color: #007bff;
+        transform: translateY(-3px);
     }
-    .chat-button {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
+    .btn-custom {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    }
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    .btn-outline-primary {
+        color: white;
+        border-color: #007bff;
+    }
+    .btn-outline-primary:hover {
         background-color: #007bff;
         color: white;
-        border-radius: 50%;
-        padding: 15px;
-        font-size: 1.5rem;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease;
     }
-    .chat-button:hover {
-        background-color: #0056b3;
-        transform: scale(1.1);
+    .fadeIn {
+        animation: fadeIn 1.5s ease-in-out;
     }
-
-    .btn-primary, .btn-outline-light {
-        font-size: 1.25rem;
-        padding: 0.75rem 1.5rem;
+    .lead {
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.6;
+    }
+    .profile-image-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .profile-image {
+        max-width: 100%;
+        max-height: 500px; /* Adjust this value as needed */
+        object-fit: cover;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease;
     }
-    .btn-primary:hover, .btn-outline-light:hover {
-        transform: scale(1.1);
+    .profile-image:hover {
+        transform: translateY(-5px);
     }
-
-    .fadeIn {
-        animation: fadeIn 2s ease-in-out;
-    }
-
-    .lead {
-        font-size: 1.25rem;
-        color: #555;
-    }
-
-
     @keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 991px) {
+        .hero-section {
+            padding-top: 40px;
+        }
+        .profile-image-container {
+            margin-top: 2rem;
+        }
+        .profile-image {
+            max-height: 400px;
+        }
     }
 </style>
+
 <div class="hero-section" id="hero-section">
-    <div class="brainContainer"></div>
-    <div class="row align-items-center mt-5 fadeIn">
-        <div class="col-lg-6">
-            <div class="greeting mb-2">Hi, I'm Naphtal 👋</div>
-            <h1 class="display-4 fw-bold mb-4">
-                <span class="highlight">AI, ML Engineer</span> &<br>
-                <span class="highlight">Full Stack Web Developer</span>
-            </h1>
-            <p class="lead mb-4">
-                With over 4+ years of experience in AI and ML engineering, coupled with full stack web development, I've transformed complex challenges into innovative, scalable solutions. Always ready to bridge the gap between cutting-edge technology and user-friendly digital experiences.
-            </p>
-            <div class="mb-4">
-                {% comment %} Currently working at <span class="highlight">Noble</span>. {% endcomment %}
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-6 fadeIn">
+                <div class="greeting mb-2">Hi, I'm Naphtal 👋</div>
+                <h1 class="display-4 fw-bold mb-4">
+                    <span class="highlight">AI, ML Developer</span> &<br>
+                    <span class="highlight">Full Stack Web Developer</span>
+                </h1>
+                <p class="lead mb-4">
+                    With over 4+ years of experience in AI and ML engineering, coupled with full stack web development, I've transformed complex challenges into innovative, scalable solutions. Always ready to bridge the gap between cutting-edge technology and user-friendly digital experiences.
+                </p>
+                <div class="mb-4">
+                    <a href="#contact" class="btn btn-primary btn-custom me-2">Hire me</a>
+                    <a href="#projects" class="btn btn-outline-primary btn-custom">View Projects</a>
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/usa-naphtal/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+                    <a href="https://www.facebook.com/Naphtal112/" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/naphtal112/" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
+                    <a href="https://t.me/awisdomman" target="_blank" rel="noopener noreferrer"><i class="bi bi-telegram"></i></a>
+                </div>
             </div>
-            <div class="mb-4">
-                <button class="btn btn-primary me-2">Hire me</button>
-                <button class="btn btn-outline-light">View Projects</button>
+            <div class="col-lg-6 fadeIn">
+                <div class="profile-image-container">
+                    <img src="{% static 'images/myprofile.png' %}" alt="Naphtal USABYUWERA" class="profile-image">
+                </div>
             </div>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/usa-naphtal/" class="me-3"><i class="bi bi-linkedin"></i></a>
-                <a href="https://www.facebook.com/Naphtal112/" class="me-3"><i class="bi bi-facebook"></i></a>
-                <a href="https://www.instagram.com/naphtal112/" class="me-3"><i class="bi bi-instagram"></i></a>
-                <a href="https://t.me/awisdomman" class="me-3"><i class="bi bi-telegram"></i></a>
-            </div>
-        </div>
-        <div class="col-lg-6 text-center text-lg-end mt-4 mt-lg-0">
-            <img src="{% static 'images/myprofile.png' %}" alt="Naphtal USABYUWERA" class="img-fluid rounded">
         </div>
     </div>
 </div>
+
 {% block extra_js %}
     <script src="{% static 'js/brain.js' %}"></script>
 {% endblock %}

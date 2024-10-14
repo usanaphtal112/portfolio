@@ -134,3 +134,7 @@ footer {
     flex-shrink: 0;
     padding: 20px 0;
 }
+
+li, a{
+    text-decoration: none;
+}

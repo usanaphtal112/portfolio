@@ -1,4 +1,9 @@
 from django.views.generic import TemplateView
+from django.views import View
+from django.core.mail import send_mail
+from django.contrib import messages
+from django.shortcuts import redirect, render
+from .forms import ContactForm
 import json
 
 
@@ -30,3 +35,36 @@ class ProjectListView(TemplateView):
 
 class ResumeView(TemplateView):
     template_name = "pages/resume_html.html"
+
+
+class ContactMeView(View):
+    template_name = "pages/contactme.html"
+
+    def get(self, request):
+        form = ContactForm()
+        return render(request, self.template_name, {"form": form})
+
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data.get("email", "")
+            message = form.cleaned_data["message"]
+
+            # Send email
+            send_mail(
+                subject=f"New contact form submission from {name}",
+                message=f"Name: {name}\nEmail: {email}\nMessage: {message}",
+                from_email=email,
+                recipient_list=["usa.naphtal@gmail.com"],  # Replace with your email
+                fail_silently=False,
+            )
+
+            messages.success(request, "Your message has been sent successfully!")
+            return redirect("contact_me_view")  # Adjust this to match your URL name
+        else:
+            messages.error(
+                request, "There was an error with your submission. Please try again."
+            )
+
+        return render(request, self.template_name, {"form": form})
