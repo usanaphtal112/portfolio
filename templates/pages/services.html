@@ -1,125 +1,188 @@
 {% load static %}
 
+<div class="service-spectrum">
+
+        <h1 class="title">Service Spectrum</h1>
+        <p class="subtitle">Transforming complex challenges into innovative, scalable solutions at the cutting edge of technology.</p>
+
+        <div class="services-grid">
+            <div class="service-card" style="--accent-color: #FF6B6B;">
+                <div class="service-content">
+                    <img src="{% static 'images/ai_web.png' %}" alt="AI-Powered Web Solutions" class="service-icon">
+                    <h2>AI-Powered Web Solutions</h2>
+                    <p>Integrating advanced AI capabilities into web solutions to enhance functionality and user experience.</p>
+                    <a href="#" class="btn-view">View Projects</a>
+                </div>
+            </div>
+            <div class="service-card" style="--accent-color: #4ECDC4;">
+                <div class="service-content">
+                    <img src="{% static 'images/intelligent_automation.png' %}" alt="Intelligent Automation Systems" class="service-icon">
+                    <h2>Intelligent Automation Systems</h2>
+                    <p>Automating workflows using AI and ML to increase efficiency and reduce manual tasks.</p>
+                    <a href="#" class="btn-view">View Projects</a>
+                </div>
+            </div>
+            <div class="service-card" style="--accent-color: #45B7D1;">
+                <div class="service-content">
+                    <img src="{% static 'images/data_driven.png' %}" alt="Data-Driven Decision Making" class="service-icon">
+                    <h2>Data-Driven Decision Making</h2>
+                    <p>Leveraging data analytics to provide actionable insights and drive business decisions.</p>
+                    <a href="#" class="btn-view">View Projects</a>
+                </div>
+            </div>
+            <div class="service-card" style="--accent-color: #FF9F1C;">
+                <div class="service-content">
+                    <img src="{% static 'images/scalable_saas.png' %}" alt="Scalable SaaS Development" class="service-icon">
+                    <h2>Scalable SaaS Development</h2>
+                    <p>Building robust, cloud-native software-as-a-service platforms tailored to your needs.</p>
+                    <a href="#" class="btn-view">View Projects</a>
+                </div>
+            </div>
+            <div class="service-card" style="--accent-color: #A364D9;">
+                <div class="service-content">
+                    <img src="{% static 'images/custom_ai.png' %}" alt="Custom AI Model Creation" class="service-icon">
+                    <h2>Custom AI Model Creation</h2>
+                    <p>Designing and developing AI models tailored to address specific business challenges.</p>
+                    <a href="#" class="btn-view">View Projects</a>
+                </div>
+            </div>
+            <div class="service-card" style="--accent-color: #58A4B0;">
+                <div class="service-content">
+                    <img src="{% static 'images/web_scraping.png' %}" alt="Advanced Web Scraping & Data Extraction" class="service-icon">
+                    <h2>Advanced Web Scraping & Data Extraction</h2>
+                    <p>Ethically extracting web data at scale to support data-driven strategies.</p>
+                    <a href="#" class="btn-view">View Projects</a>
+                </div>
+            </div>
+        </div>
+
+</div>
+
 <style>
     .service-spectrum {
-        font-family: Arial, sans-serif;
-        background-color: #f0f2f5;
-        color: #333;
+        color: #ffffff;
+        padding: 5rem 0;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .title {
+        font-size: 3.5rem;
+        font-weight: 700;
         text-align: center;
-        margin: 0;
-        padding: 20px;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #FF9F1C, #A364D9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 300% 300%;
+        animation: gradient-shift 15s ease infinite;
     }
 
-    .service-spectrum h1 {
-        font-size: 2.5em;
-        margin-bottom: 10px;
+    .subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        opacity: 0.8;
     }
 
-    .service-spectrum p {
-        font-size: 1.2em;
-        color: #666;
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 0 2rem;
     }
 
-    .services {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin-top: 40px;
+    .service-card {
+        background-color: #16213E;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
     }
 
-    .service {
-        background-color: #fff;
-        padding: 20px;
-        margin: 10px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        transition: transform 0.3s, box-shadow 0.3s;
-        flex-basis: calc(33.333% - 20px);
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background-color: var(--accent-color);
+        transition: height 0.3s ease;
     }
 
-    .service:hover {
+    .service-card:hover::before {
+        height: 100%;
+        opacity: 0.1;
+    }
+
+    .service-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
-    .service img {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 10px;
-        transition: transform 0.3s;
+    .service-content {
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
     }
 
-    .service:hover img {
-        transform: scale(1.1);
+    .service-icon {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 1rem;
+        border: 3px solid var(--accent-color);
+        transition: transform 0.3s ease;
     }
 
-    .service h2 {
-        color: #4CAF50;
-        font-size: 1.8em;
-        margin-bottom: 10px;
+    .service-card:hover .service-icon {
+        transform: scale(1.1) rotate(5deg);
     }
 
-    .service p {
-        color: #666;
-        font-size: 1.1em;
-        margin-bottom: 10px;
+    .service-card h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--accent-color);
     }
 
-    .service a {
-        color: #4CAF50;
-        text-decoration: none;
-        font-weight: bold;
+    .service-card p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+        opacity: 0.8;
+    }
+
+    .btn-view {
         display: inline-block;
-        margin-top: 10px;
-        transition: color 0.3s;
+        padding: 0.5rem 1rem;
+        background-color: var(--accent-color);
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .service a:hover {
-        color: #388E3C;
+    .btn-view:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes gradient-shift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @media (max-width: 768px) {
+        .title {
+            font-size: 2.5rem;
+        }
+        .subtitle {
+            font-size: 1rem;
+        }
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
     }
 </style>
-
-<div class="service-spectrum">
-    <h1>Service Spectrum</h1>
-    <p>Transforming complex challenges into innovative, scalable solutions at the cutting edge of technology.</p>
-
-    <div class="services">
-        <div class="service">
-            <img src="{% static 'images/ai_web.png' %}" alt="AI-Powered Web Solutions">
-            <h2>AI-Powered Web Solutions</h2>
-            <p>Integrating advanced AI capabilities into web solutions to enhance functionality and user experience.</p>
-            <a href="#">View Projects &gt;</a>
-        </div>
-        <div class="service">
-            <img src="{% static 'images/intelligent_automation.png' %}" alt="Intelligent Automation Systems">
-            <h2>Intelligent Automation Systems</h2>
-            <p>Automating workflows using AI and ML to increase efficiency and reduce manual tasks.</p>
-            <a href="#">View Projects &gt;</a>
-        </div>
-        <div class="service">
-            <img src="{% static 'images/data_driven.png' %}" alt="Data-Driven Decision Making">
-            <h2>Data-Driven Decision Making</h2>
-            <p>Leveraging data analytics to provide actionable insights and drive business decisions.</p>
-            <a href="#">View Projects &gt;</a>
-        </div>
-        <div class="service">
-            <img src="{% static 'images/scalable_saas.png' %}" alt="Scalable SaaS Development">
-            <h2>Scalable SaaS Development</h2>
-            <p>Building robust, cloud-native software-as-a-service platforms tailored to your needs.</p>
-            <a href="#">View Projects &gt;</a>
-        </div>
-        <div class="service">
-            <img src="{% static 'images/custom_ai.png' %}" alt="Custom AI Model Creation">
-            <h2>Custom AI Model Creation</h2>
-            <p>Designing and developing AI models tailored to address specific business challenges.</p>
-            <a href="#">View Projects &gt;</a>
-        </div>
-        <div class="service">
-            <img src="{% static 'images/web_scraping.png' %}" alt="Advanced Web Scraping & Data Extraction">
-            <h2>Advanced Web Scraping & Data Extraction</h2>
-            <p>Ethically extracting web data at scale to support data-driven strategies.</p>
-            <a href="#">View Projects &gt;</a>
-        </div>
-    </div>
-</div>
-<script src="{% static 'js/service.js' %}"></script>

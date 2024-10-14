@@ -15,23 +15,23 @@
 
 <div class="container-fluid">
     <section class="featured-projects">
-        <div class="container">
-            <h2 class="section-title text-light">Featured Projects</h2>
 
-            {% for project in projectsData %}
-            <div class="project-container {% if forloop.counter|divisibleby:2 %}reverse{% endif %}">
-                <div class="project-info">
-                    <h3 class="project-title">{{ project.title }}</h3>
-                    <p class="project-type">{{ project.type }}</p>
-                    <p class="project-description">{{ project.description }}</p>
-                    <a href="{{ project.case_study_url }}" class="btn-case-study">View Case Study</a>
-                </div>
-                <div class="project-image">
-                    <img src="{% static project.image %}" alt="{{ project.title }} screenshot">
-                </div>
+        <h2 class="section-title text-light">Featured Projects</h2>
+
+        {% for project in projectsData %}
+        <div class="project-container {% if forloop.counter|divisibleby:2 %}reverse{% endif %}">
+            <div class="project-info">
+                <h3 class="project-title">{{ project.title }}</h3>
+                <p class="project-type">{{ project.type }}</p>
+                <p class="project-description">{{ project.description }}</p>
+                <a href="{{ project.case_study_url }}" class="btn-case-study">View Case Study</a>
             </div>
-            {% endfor %}
+            <div class="project-image">
+                <img src="{% static project.image %}" alt="{{ project.title }} screenshot">
+            </div>
         </div>
+        {% endfor %}
+
         <div class="view-more-projects">
             <a href="{% url 'project_work' %}" class="btn btn-secondary">View More Projects</a>
         </div>
