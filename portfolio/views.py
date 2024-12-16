@@ -68,3 +68,56 @@ class ContactMeView(View):
             )
 
         return render(request, self.template_name, {"form": form})
+
+
+class ProjectContactView(View):
+    template_name = "pages/project.html"
+
+    def get(self, request):
+        form = ContactForm()
+        return render(request, self.template_name, {"form": form})
+
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Extract form data
+            project = form.cleaned_data.get("project", "Not specified")
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            message = form.cleaned_data["message"]
+
+            # Construct email body
+            email_body = (
+                f"You have received a new contact form submission:\n\n"
+                f"Project: {project}\n"
+                f"Name: {name}\n"
+                f"Email: {email}\n\n"
+                f"Message:\n{message}"
+            )
+
+            try:
+                # Send email
+                send_mail(
+                    subject=f"Contact Form Submission - {project}",
+                    message=email_body,
+                    from_email=email,
+                    recipient_list=["usa.naphtal@gmail.com"],
+                    fail_silently=False,
+                )
+                # Success message and redirect
+                messages.success(request, "Your message has been sent successfully!")
+                return redirect("project_work")
+            except Exception as e:
+                # Error message
+                messages.error(
+                    request, "Failed to send your message. Please try again."
+                )
+
+        else:
+            # Form validation failed
+            messages.error(
+                request, "There was an error with your submission. Please try again."
+            )
+
+        # Re-render the page with the form and errors
+        return render(request, self.template_name, {"form": form})

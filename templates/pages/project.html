@@ -2,23 +2,305 @@
 {% load static %}
 
 {% block content %}
+<style>
+    :root {
+        --bg-primary: #121212;
+        --bg-secondary: #1E1E1E;
+        --text-primary: #E0E0E0;
+        --text-secondary: #B0B0B0;
+        --accent-primary: #BB86FC;
+        --accent-secondary: #03DAC6;
+        --border-color: #3F3F3F;
+    }
+
+    body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+        line-height: 1.6;
+    }
+
+    .featured-projects {
+        background-color: var(--bg-primary);
+        padding: 4rem 0;
+    }
+
+    .section-title {
+        color: var(--accent-primary);
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background-color: var(--accent-secondary);
+    }
+
+    .row {
+        background-color: var(--bg-secondary);
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        margin-bottom: 2.5rem;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    .row:hover {
+        transform: scale(1.02);
+    }
+
+    .project-title {
+        color: var(--accent-primary);
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .project-description {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+    }
+
+    .img-fluid {
+        border-radius: 12px;
+        transition: transform 0.3s ease;
+    }
+
+    .img-fluid:hover {
+        transform: scale(1.05);
+    }
+
+    .contact-modal-btn {
+        background-color: var(--accent-secondary);
+        border: none;
+        color: var(--bg-primary);
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .contact-modal-btn:hover {
+        background-color: var(--accent-primary);
+        transform: translateY(-3px);
+    }
+
+    .modal-dialog {
+        max-width: 900px;
+        width: 90%;
+    }
+
+    .modal-content {
+        background-color: var(--bg-secondary);
+        border: none;
+        border-radius: 12px;
+        padding: 20px;
+    }
+
+    .modal-header {
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .modal-title {
+        color: var(--accent-primary);
+    }
+
+    .btn-close {
+        filter: invert(1) grayscale(100%) brightness(200%);
+    }
+
+    .modal-body {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .form-section, .modal-image {
+        flex: 1;
+    }
+
+    .modal-image img {
+        max-width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-control {
+        background-color: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+    }
+
+    .form-control:focus {
+        background-color: var(--bg-secondary);
+        border-color: var(--accent-secondary);
+        box-shadow: 0 0 0 0.2rem rgba(3, 218, 198, 0.25);
+        color: var(--text-primary);
+    }
+
+    .form-label {
+        color: var(--text-secondary);
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+        .row {
+            flex-direction: column !important;
+            text-align: center;
+        }
+
+        .row > div {
+            margin-bottom: 1.5rem;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+        }
+
+        .modal-dialog {
+            margin: 1.75rem 0.5rem;
+            max-width: calc(100% - 1rem);
+            width: 100%;
+            height: auto;
+            max-height: 90vh;
+        }
+
+        .modal-content {
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .modal-body {
+            flex-direction: column;
+            gap: 1rem;
+            overflow-y: auto;
+            max-height: 70vh;
+            padding: 1rem;
+        }
+
+        .modal-image {
+            order: 1;
+            margin-bottom: 1rem;
+            max-height: 250px;
+        }
+
+        .modal-image img {
+            max-height: 100%;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .form-section {
+            order: 2;
+        }
+
+        .modal-header {
+            padding: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+        }
+
+        .btn-close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+
+        .form-control {
+            font-size: 0.95rem;
+            padding: 0.5rem 0.75rem;
+        }
+    }
+</style>
+
 <section class="featured-projects">
     <div class="container-fluid">
-        <h2 class="section-title">Featured Projects</h2>
+        <h2 class="section-title text-center my-4">Featured Projects</h2>
 
         {% for project in projectsData %}
-        <div class="project-container {% if forloop.counter|divisibleby:2 %}reverse{% endif %}">
-            <div class="project-info">
+        <div class="row align-items-center my-5 {% if forloop.counter|divisibleby:2 %}flex-row-reverse{% endif %}">
+            <div class="col-md-6">
                 <h3 class="project-title">{{ project.title }}</h3>
-                <p class="project-type">{{ project.type }}</p>
                 <p class="project-description">{{ project.description }}</p>
-                <a href="{{ project.case_study_url }}" class="btn-case-study">View Case Study</a>
+                <button class="btn btn-primary contact-modal-btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#contactModal"
+                        data-project="{{ project.title }}">
+                    Contact Me About This Project
+                </button>
             </div>
-            <div class="project-image">
-                <img src="{% static project.image %}" alt="{{ project.title }} screenshot">
+            <div class="col-md-6">
+                <img src="{% static project.image %}" alt="{{ project.title }} screenshot" class="img-fluid rounded shadow">
             </div>
         </div>
         {% endfor %}
     </div>
 </section>
+
+<!-- Contact Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="contactModalLabel">Let's Collaborate on Your Project!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img src="{% static 'images/contact-placeholder.jpg' %}" alt="Contact Illustration">
+                </div>
+                <div class="form-section">
+                    <form action="{% url 'project_contact_me' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="project" class="form-label">Project</label>
+                            <input type="text" id="project" name="project" class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.contact-modal-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const projectTitle = this.getAttribute('data-project');
+            document.getElementById('project').value = projectTitle;
+        });
+    });
+</script>
 {% endblock %}
