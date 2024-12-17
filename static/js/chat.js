@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
             showTypingIndicator();
             setTimeout(() => {
                 hideTypingIndicator();
-                appendMessage("Hi, I am Naphtal USABYUWERA, Can't wait to hear from you! You can leave your message to me me here on Email, usa.naphtal@gmail.com", 'bot');
-            }, 1500); // Delay for a more natural response time
+                appendMessage("Hi, I am Naphtal USABYUWERA, Can't wait to hear from you! You can leave your message to me me here on Email, usanaphtal112@gmail.com", 'bot');
+            }, 1500);
         }
     });
 

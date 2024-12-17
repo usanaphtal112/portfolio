@@ -1,19 +1,19 @@
 #chat2 {
     position: fixed;
-    bottom: 80px; /* Increase distance from the bottom to avoid overlap with the chat button */
+    bottom: 80px;
     right: 20px;
-    width: 400px; /* Increased width */
-    max-height: 100vh; /* Limit height for better scrolling */
-    overflow-y: auto; /* Enable scrolling if content exceeds max-height */
+    width: 350px;
+    max-height: 100vh;
+    overflow-y: auto;
     background-color: white;
-    border-radius: 15px; /* Rounded corners */
+    border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    z-index: 1050; /* Ensure it's above other content */
-    display: none; /* Initially hidden */
+    z-index: 1050;
+    display: none;
 }
 
 #chat2.show {
-    display: block; /* Show the chat popup when needed */
+    display: block;
 }
 
 .chat-button {
@@ -57,6 +57,12 @@
     flex: 1;
     margin-right: 10px;
     border-radius: 20px;
+    color: black;
+    background-color: white;
+}
+
+#chat2 .card-footer input::placeholder {
+    color: #888;
 }
 
 #chat2 .card-footer a {

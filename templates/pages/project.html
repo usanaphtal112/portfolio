@@ -112,10 +112,6 @@
         text-align: center;
     }
 
-    .modal-title {
-        color: var(--accent-primary);
-    }
-
     .btn-close {
         filter: invert(1) grayscale(100%) brightness(200%);
     }
@@ -151,6 +147,40 @@
 
     .form-label {
         color: var(--text-secondary);
+    }
+
+
+    .modal-header {
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-title {
+        color: var(--accent-primary);
+        text-align: center;
+        width: 100%;
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        gap: 20px;
+    }
+
+    .social-icons a {
+        color: #555;
+        font-size: 1.5rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+        text-decoration: none;
+    }
+
+    .social-icons a:hover {
+        color: rgb(104, 132, 162);
+        transform: translateY(-3px) scale(1.1);
     }
 
     @keyframes fadeIn {
@@ -215,10 +245,6 @@
             padding: 1rem;
         }
 
-        .modal-title {
-            font-size: 1.2rem;
-        }
-
         .btn-close {
             position: absolute;
             right: 1rem;
@@ -261,12 +287,18 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="contactModalLabel">Let's Collaborate on Your Project!</h5>
+                <h5 class="modal-title text-center" id="contactModalLabel" >Let's Collaborate on Your Project!</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="modal-image">
                     <img src="{% static 'images/contact-placeholder.jpg' %}" alt="Contact Illustration">
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/usa-naphtal/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
+                        <a href="https://www.facebook.com/Naphtal112/" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/naphtal112/" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
+                        <a href="https://t.me/awisdomman" target="_blank" rel="noopener noreferrer"><i class="bi bi-telegram"></i></a>
+                    </div>
                 </div>
                 <div class="form-section">
                     <form action="{% url 'project_contact_me' %}" method="POST">

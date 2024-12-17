@@ -1,0 +1,105 @@
+{% extends 'components/base.html' %}
+
+{% block content %}
+<style>
+    :root {
+        --bg-primary: #121212;
+        --bg-secondary: #1E1E1E;
+        --text-primary: #E0E0E0;
+        --text-secondary: #B0B0B0;
+        --accent-primary: #BB86FC;
+        --accent-secondary: #03DAC6;
+        --border-color: #3F3F3F;
+    }
+    body {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+    }
+</style>
+<div class="container-fluid p-0" style="background-color: var(--bg-primary);">
+    <div class="container-fluid py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <!-- Header -->
+                <div class="text-center mb-5">
+                    <h1 class="display-4 fw-bold mb-2" style="color: var(--accent-primary)">USABYUWERA Naphtal</h1>
+                    <p class="lead" style="color: var(--text-secondary)">Data Science & Artificial Intelligence Enthusiast</p>
+                </div>
+
+                <!-- Professional Summary -->
+                <div class="mb-4 p-4" style="background-color: var(--bg-secondary); border-left: 4px solid var(--accent-primary);">
+                    <h2 class="h3 mb-3" style="color: var(--accent-primary)">Professional Summary</h2>
+                    <p style="color: var(--text-secondary)">Ambitious Data Science & AI enthusiast with a robust foundation in research and a proven track record of developing impactful machine learning models. Skilled in Python, deep learning frameworks, and full-stack development. Experienced in conducting research on cutting-edge algorithms and applying AI techniques to real-world challenges.</p>
+                </div>
+
+                <!-- Personal Projects -->
+                <div class="mb-4">
+                    <h2 class="h3 mb-4" style="color: var(--accent-primary); border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">Personal Projects</h2>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-3 h-100" style="background-color: var(--bg-secondary); border-left: 3px solid var(--accent-secondary);">
+                                <h3 class="h5 mb-3" style="color: var(--accent-secondary)">Advanced Image Classification System</h3>
+                                <p style="color: var(--text-secondary)">Developed a state-of-the-art image classification and face recognition system using CNNs and Siamese Neural Networks. Achieved 98% accuracy on a dataset of 100,000 images.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 h-100" style="background-color: var(--bg-secondary); border-left: 3px solid var(--accent-secondary);">
+                                <h3 class="h5 mb-3" style="color: var(--accent-secondary)">Scalable E-Commerce API</h3>
+                                <p style="color: var(--text-secondary)">Designed a high-performance E-commerce API with integrated recommendation systems based on collaborative filtering and ML techniques.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 h-100" style="background-color: var(--bg-secondary); border-left: 3px solid var(--accent-secondary);">
+                                <h3 class="h5 mb-3" style="color: var(--accent-secondary)">Image Generation using GANs</h3>
+                                <p style="color: var(--text-secondary)">Built a GAN-based model to generate realistic images, showcasing expertise in adversarial learning and deep generative models.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 h-100" style="background-color: var(--bg-secondary); border-left: 3px solid var(--accent-secondary);">
+                                <h3 class="h5 mb-3" style="color: var(--accent-secondary)">Time Series Forecasting</h3>
+                                <p style="color: var(--text-secondary)">Implemented an LSTM model to forecast stock market trends, achieving 15% lower MAPE and improving predictive accuracy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="mb-4 p-4" style="background-color: var(--bg-secondary);">
+                    <h2 class="h3 mb-3" style="color: var(--accent-primary); border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">Technical Skills</h2>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <h4 class="h6 mb-2" style="color: var(--accent-secondary)">Programming Languages</h4>
+                            <p style="color: var(--text-secondary)">Python, R, JavaScript, SQL</p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h4 class="h6 mb-2" style="color: var(--accent-secondary)">Machine Learning & AI</h4>
+                            <p style="color: var(--text-secondary)">TensorFlow, PyTorch, scikit-learn, Keras</p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h4 class="h6 mb-2" style="color: var(--accent-secondary)">Data Visualization</h4>
+                            <p style="color: var(--text-secondary)">Tableau, Power BI, Matplotlib, Seaborn</p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h4 class="h6 mb-2" style="color: var(--accent-secondary)">Web Development</h4>
+                            <p style="color: var(--text-secondary)">Django, Flask, React, HTML/CSS</p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h4 class="h6 mb-2" style="color: var(--accent-secondary)">Database Management</h4>
+                            <p style="color: var(--text-secondary)">PostgreSQL, MongoDB, Redis</p>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <h4 class="h6 mb-2" style="color: var(--accent-secondary)">Cloud Platforms</h4>
+                            <p style="color: var(--text-secondary)">AWS, Google Cloud</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Button -->
+                <div class="text-center">
+                    <a href="{% url 'contact_me_view' %}" class="btn px-5 py-3" style="background-color: var(--accent-primary); color: var(--bg-primary); border: none;">Request Full Resume</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
