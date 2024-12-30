@@ -53,15 +53,15 @@ class ContactMeView(View):
 
             # Send email
             send_mail(
-                subject=f"New contact form submission from {name}",
+                subject=f"Portifolio New Contact Form Submission from {name}",
                 message=f"Name: {name}\nEmail: {email}\nMessage: {message}",
                 from_email=email,
-                recipient_list=["usa.naphtal@gmail.com"],  # Replace with your email
+                recipient_list=["usanaphtal112@gmail.com"],
                 fail_silently=False,
             )
 
             messages.success(request, "Your message has been sent successfully!")
-            return redirect("contact_me_view")  # Adjust this to match your URL name
+            return redirect("contact_me_view")
         else:
             messages.error(
                 request, "There was an error with your submission. Please try again."

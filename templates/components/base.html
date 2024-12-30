@@ -63,10 +63,20 @@
     <script src="{% static 'js/chat.js' %}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            setTimeout(function () {
+            // Check if this is the first visit
+            if (!localStorage.getItem('hasVisited')) {
+                // Show splash screen for first visit
+                setTimeout(function () {
+                    document.getElementById('splashScreen').classList.add('d-none');
+                    document.getElementById('mainContent').classList.remove('d-none');
+                    // Set the flag in localStorage
+                    localStorage.setItem('hasVisited', 'true');
+                }, 2000);
+            } else {
+                // Skip splash screen for returning visitors
                 document.getElementById('splashScreen').classList.add('d-none');
                 document.getElementById('mainContent').classList.remove('d-none');
-            }, 3000);
+            }
         });
     </script>
     {% block extra_js %}{% endblock %}
