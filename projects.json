@@ -1,42 +1,92 @@
 [
-    {
-      "title": "Deep Learning for Multimodal Portifolio intergrated in Django web application.",
-      "image": "images/multimodel-portifolio-1.jpg",
-      "description": "The Deep Learning Model Integration project is a comprehensive web application built on the Django framework, incorporating various deep learning models for prediction and Analysis. It serves as a versatile platform for experimenting with and evaluating different types of neural networks, including Simple Artificial Neural Networks (ANN), Convolutional Neural Networks (CNN), VGG16, Recurrent Neural Networks (RNN), Long Short-Term Memory (LSTM) networks, Bidirectional RNN (BiRNN), and Gated Recurrent Units (GRU).",
-      "testLink": "#",
-      "repositoryLink": "#",
-      "backendDocsLink": "#"
-    },
-    {
-      "title": "E-commerce API with Django Rest Framework and Stripe Payment Integration",
-      "image": "images/ecommerce-image-1.jpeg",
-      "description": "E-commerce API built with Django Rest Framework provides a robust backend solution for online stores, enabling seamless management of products, orders, customers, and payments. Leveraging the power and flexibility of Django Rest Framework, coupled with the secure and feature-rich Stripe Payment API integration, our solution empowers businesses to create scalable and efficient e-commerce platforms.",
-      "testLink": "https://green-kitchen.netlify.app/",
-      "repositoryLink": "https://github.com/usanaphtal112/green-kitchen-bn",
-      "backendDocsLink": "https://greenkitchen.vercel.app/api/v1/api-docs/"
-    },
-    {
-      "title": "Task Management System",
-      "image": "images/Task_Management.png",
-      "description": " a comprehensive web application designed to streamline and optimize task organization, delegation, and tracking within teams or individual workflows. Leveraging the powerful combination of Django Rest Framework (DRF) for the backend API and React for the frontend, this project offers a seamless user experience with robust functionality.",
-      "testLink": "https://workflowtaskmanagement.netlify.app/",
-      "repositoryLink": "https://github.com/usanaphtal112/Task-management/",
-      "backendDocsLink": "https://naphtal.pythonanywhere.com/api/v1/task-management-documentation/swagger-ui/"
-    },
-    {
-      "title": "Face Recognition System",
-      "image": "images/face-recognition-img.jpg",
-      "description": "The Face Recognition System is an innovative software solution designed to identify and verify individuals based on their facial features. Leveraging state-of-the-art deep learning algorithms and computer vision techniques, this project offers accurate and reliable facial recognition capabilities for various applications, including security systems, access control, attendance tracking, and personalized user experiences.",
-      "testLink": "#",
-      "repositoryLink": "#",
-      "backendDocsLink": "#"
-    },
-    {
-      "title": "Data Analysis - COVID-19 Analysis Report",
-      "image": "images/covid-19-analysis-report.png",
-      "description": "The COVID-19 Analysis Report project is a comprehensive data analysis platform aimed at providing insights into the global COVID-19 pandemic. By aggregating and analyzing data from various reliable sources, this project aims to facilitate informed decision-making, track trends, and assess the impact of the pandemic on different regions and demographics.",
-      "testLink": "#",
-      "repositoryLink": "#",
-      "backendDocsLink": "#"
-    }
-  ]
+  {
+    "title": "Deep Learning for Multimodal Portfolio integrated in Django web application",
+    "image": "images/multimodel-portifolio-1.jpg",
+    "description": "A comprehensive web application built on Django framework, incorporating various deep learning models for prediction and analysis. It serves as a versatile platform for experimenting with and evaluating different types of neural networks including ANN, CNN, VGG16, RNN, LSTM, BiRNN, and GRU.",
+    "tools": ["Django", "Python", "TensorFlow", "Keras", "NumPy", "Pandas", "OpenCV", "Scikit-learn", "HTML/CSS", "JavaScript", "Bootstrap"],
+    "category": "Machine Learning",
+    "testLink": "#",
+    "repositoryLink": "#",
+    "backendDocsLink": "#"
+  },
+  {
+    "title": "Image Search Model with Deep Learning",
+    "image": "images/image-search-model.png",
+    "description": "An advanced image search system using deep learning techniques for content-based image retrieval. The model can analyze image features and find similar images based on visual content, making it perfect for e-commerce, digital asset management, and visual search applications.",
+    "tools": ["Python", "TensorFlow", "Keras", "OpenCV", "NumPy", "Matplotlib", "PIL", "Scikit-learn", "Jupyter Notebook"],
+    "category": "Computer Vision",
+    "testLink": "https://www.kaggle.com/code/naphtal/image-search-model/",
+    "repositoryLink": "https://www.kaggle.com/code/naphtal/image-search-model/",
+    "backendDocsLink": "#"
+  },
+  {
+    "title": "Nurses Catalyst Platform",
+    "image": "images/nurses-catalyst.png",
+    "description": "A comprehensive healthcare platform designed to support nursing professionals with resources, networking opportunities, and professional development tools. The platform facilitates knowledge sharing and community building within the nursing profession.",
+    "tools": ["Web development"],
+    "category": "Healthcare Platform",
+    "testLink": "https://www.nursescatalyst.com/",
+    "repositoryLink": "#",
+    "backendDocsLink": "#"
+  },
+  {
+    "title": "Uruyange - GreenKitchen",
+    "image": "images/uruyange-platform.png",
+    "description": "A platform connecting consumers directly with local farmers to promote healthy living and support local agriculture.",
+    "tools": ["Web Development"],
+    "category": "Cultural Platform",
+    "testLink": "https://uruyange.com/",
+    "repositoryLink": "#",
+    "backendDocsLink": "#"
+  },
+  {
+    "title": "TechSky Shop - E-commerce Platform",
+    "image": "images/techsky-shop.png",
+    "description": "A modern e-commerce platform specializing in technology products. Features include product catalog, shopping cart, secure payment processing, order management, and customer account management with a responsive design.",
+    "tools": ["Web Development"],
+    "category": "E-commerce",
+    "testLink": "https://www.techskyshop.com/",
+    "repositoryLink": "#",
+    "backendDocsLink": "#"
+  },
+  {
+    "title": "E-commerce API with Django Rest Framework and Stripe Payment Integration",
+    "image": "images/ecommerce-image-1.jpeg",
+    "description": "A robust backend solution for online stores, enabling seamless management of products, orders, customers, and payments. Built with Django Rest Framework and integrated with Stripe Payment API for secure transactions.",
+    "tools": ["Django", "Django REST Framework", "Python", "PostgreSQL", "Stripe API", "Redis", "Celery", "JWT", "Swagger"],
+    "category": "Backend API",
+    "testLink": "https://green-kitchen.netlify.app/",
+    "repositoryLink": "https://github.com/usanaphtal112/green-kitchen-bn",
+    "backendDocsLink": "https://greenkitchen.vercel.app/api/v1/api-docs/"
+  },
+  {
+    "title": "Task Management System",
+    "image": "images/Task_Management.png",
+    "description": "A comprehensive web application designed to streamline and optimize task organization, delegation, and tracking within teams or individual workflows. Features real-time updates, collaboration tools, and progress tracking.",
+    "tools": ["React", "Django REST Framework", "Python", "PostgreSQL", "Redux", "Material-UI", "WebSocket", "JWT Authentication"],
+    "category": "Productivity",
+    "testLink": "https://workflowtaskmanagement.netlify.app/",
+    "repositoryLink": "https://github.com/usanaphtal112/Task-management/",
+    "backendDocsLink": "https://naphtal.pythonanywhere.com/api/v1/task-management-documentation/swagger-ui/"
+  },
+  {
+    "title": "Face Recognition System",
+    "image": "images/face-recognition-img.jpg",
+    "description": "An innovative software solution designed to identify and verify individuals based on their facial features. Leveraging state-of-the-art deep learning algorithms and computer vision techniques for security systems, access control, and attendance tracking.",
+    "tools": ["Python", "OpenCV", "TensorFlow", "Keras", "NumPy", "PIL", "Face Recognition Library", "Flask", "SQLite"],
+    "category": "Computer Vision",
+    "testLink": "#",
+    "repositoryLink": "#",
+    "backendDocsLink": "#"
+  },
+  {
+    "title": "Data Analysis - COVID-19 Analysis Report",
+    "image": "images/covid-19-analysis-report.png",
+    "description": "A comprehensive data analysis platform providing insights into the global COVID-19 pandemic. Aggregates and analyzes data from various reliable sources to facilitate informed decision-making and track pandemic trends.",
+    "tools": ["Excel", "Power BI"],
+    "category": "Data Analysis",
+    "testLink": "#",
+    "repositoryLink": "#",
+    "backendDocsLink": "#"
+  }
+]

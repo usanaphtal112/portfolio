@@ -72,6 +72,17 @@
         100% { opacity: 1; transform: translateY(0); }
     }
 
+    .social-icon-svg {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+        transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover .social-icon-svg {
+        transform: scale(1.1); /* Optional hover effect */
+    }
+
     @media (max-width: 991px) {
         .hero-section {
             padding-top: 40px;
@@ -95,7 +106,7 @@
                     <span class="highlight">Full Stack Web Developer</span>
                 </h1>
                 <p class="lead mb-4">
-                    With over 4+ years of experience in AI and ML engineering, coupled with full stack web development, I've transformed complex challenges into innovative, scalable solutions. Always ready to bridge the gap between cutting-edge technology and user-friendly digital experiences.
+                    Ambitious Data Science & AI enthusiasts with a robust foundation in research and proven track record of developing impactful machine learning models. Skilled in Python, deep learning frameworks, and full-stack development. Experienced in conducting research on cutting-edge algorithms and applying AI techniques toreal-world challenges. Eager tocontribute to groundbreaking research and push theboundaries of AI and data science
                 </p>
                 <div class="mb-4">
                     <a href="{% url 'contact_me_view' %}" class="btn btn-primary btn-custom me-2">Hire me</a>
@@ -106,6 +117,12 @@
                     <a href="https://www.facebook.com/Naphtal112/" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a>
                     <a href="https://www.instagram.com/naphtal112/" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
                     <a href="https://t.me/awisdomman" target="_blank" rel="noopener noreferrer"><i class="bi bi-telegram"></i></a>
+                    <a href="https://github.com/usanaphtal112" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github-square"></i></a>
+                    <a href="https://www.kaggle.com/usabyuwera" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-kaggle"></i></a>
+                    <!-- Hugging Face Icon -->
+                    <a href="https://huggingface.co/usanaphtal" target="_blank" rel="noopener noreferrer">
+                        <img src="{% static 'images/Hugging Face_idJ6-I79C__0.svg' %}" alt="Hugging Face" class="social-icon-svg">
+                    </a>
                 </div>
             </div>
             <div class="col-lg-6 fadeIn">

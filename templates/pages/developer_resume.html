@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Naphtal USABYUWERA</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 12mm;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            font-size: 9pt;
+            line-height: 1.3;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 12mm;
+            background-color: white;
+            margin: 0 auto;
+            position: relative;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 8mm;
+            margin: -12mm -12mm 8mm -12mm;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 22pt;
+            margin-bottom: 3px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 14pt;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            font-size: 9pt;
+            line-height: 1.4;
+        }
+
+        .contact-info i {
+            width: 12px;
+            text-align: center;
+            margin-right: 4px;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+
+        h2 {
+            font-size: 11pt;
+            color: #003366;
+            border-bottom: 1.5px solid #003366;
+            padding-bottom: 2px;
+            margin: 8px 0 5px 0;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 10pt;
+            font-weight: 600;
+            margin: 4px 0 2px 0;
+            color: #333;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            gap: 12mm;
+        }
+
+        .left-column {
+            flex: 2;
+        }
+
+        .right-column {
+            flex: 1;
+        }
+
+        .section {
+            margin-bottom: 8px;
+        }
+
+        .description {
+            font-size: 8.5pt;
+            text-align: justify;
+            margin-bottom: 4px;
+        }
+
+        .education-item, .experience-item {
+            margin-bottom: 6px;
+        }
+
+        .education-item h3, .experience-item h3 {
+            font-size: 9.5pt;
+            margin-bottom: 1px;
+        }
+
+        .meta-info {
+            font-size: 8pt;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 3px;
+        }
+
+        .compact-list {
+            padding-left: 12px;
+            margin-bottom: 4px;
+        }
+
+        .compact-list li {
+            margin-bottom: 1px;
+            font-size: 8.5pt;
+        }
+
+        .skill-category {
+            font-weight: bold;
+            font-size: 9pt;
+            margin: 4px 0 2px 0;
+            color: #003366;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            margin-bottom: 5px;
+        }
+
+        .skill-item {
+            background-color: #e9ecef;
+            padding: 1px 5px;
+            border-radius: 10px;
+            font-size: 7.5pt;
+            white-space: nowrap;
+        }
+
+        .project-item {
+            margin-bottom: 5px;
+        }
+
+        .project-item h3 {
+            font-size: 9pt;
+            margin-bottom: 2px;
+            color: #003366;
+        }
+
+        .project-item .project-link {
+            color: #666;
+            font-size: 8pt;
+            font-style: italic;
+            margin-left: 4px;
+        }
+
+        .project-item .description {
+            font-size: 8pt;
+            margin-bottom: 3px;
+            line-height: 1.4;
+        }
+
+        #downloadBtn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .page {
+                margin: 0;
+                width: 210mm;
+                height: 297mm;
+                padding: 12mm;
+            }
+
+            #downloadBtn {
+                display: none;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        .languages-certs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cert-item {
+            margin-bottom: 6px;
+        }
+
+        .cert-item h3 {
+            font-size: 8.5pt;
+            margin-bottom: 1px;
+            color: #003366;
+        }
+
+        .cert-item .description {
+            font-size: 7.5pt;
+            color: #666;
+            line-height: 1.3;
+        }
+
+        .cert-item .date {
+            font-size: 7pt;
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <button id="downloadBtn" onclick="generatePDF()">Download PDF</button>
+
+    <div class="page">
+        <header>
+            <h1>USABYUWERA Naphtal</h1>
+            <div class="subtitle">Full Stack Developer</div>
+            <div class="contact-info">
+                <div>
+                    <i class="fas fa-envelope"></i> usanaphtal112@gmail.com |
+                    <i class="fas fa-phone"></i> (+250) 780893736 |
+                    <i class="fas fa-map-marker-alt"></i> Kigali, Rwanda
+                </div>
+                <div>
+                    <i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/usa-naphtal/">linkedin.com/in/usa-naphtal</a> |
+                    <i class="fab fa-github"></i> <a href="https://github.com/usanaphtal112">github.com/usanaphtal112</a> |
+                    <i class="fas fa-globe"></i> <a href="https://tinyurl.com/3cnsb5mm">tinyurl.com/3cnsb5mm</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="left-column">
+                <!-- Professional Summary -->
+                <section class="section">
+                    <h2>Professional Summary</h2>
+                    <p class="description">Full-stack developer with expertise in Django, React, and modern web technologies. Proven track record of developing scalable web applications, RESTful APIs, and integrating complex systems. Skilled in both frontend and backend development, with strong focus on creating efficient, maintainable, and user-friendly solutions.</p>
+                </section>
+
+                <!-- Education -->
+                <section class="section">
+                    <h2>Education</h2>
+                    <div class="education-item">
+                        <h3>KL University - B.Tech in AI & Data Science</h3>
+                        <div class="meta-info">Vijayawada, India • 2025</div>
+                        <ul class="compact-list">
+                            <li>Coursework: Machine Learning, Deep Learning, Distributed Systems, Big Data Analytics</li>
+                            <li>Research: Scalable Machine Learning, High-Performance Computing Applications</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Experience -->
+                <section class="section">
+                    <h2>Professional Experience</h2>
+                    <div class="experience-item">
+                        <h3>Data Analyst Intern</h3>
+                        <div class="meta-info">Mentored Minds, Vijayawada, India | April 2023 - June 2023</div>
+                        <ul class="compact-list">
+                            <li>Applied time series modeling and classification techniques, achieving 20% improvement in forecast accuracy</li>
+                            <li>Implemented statistical analysis pipelines, enhancing data quality by 30%</li>
+                            <li>Conducted feature importance analysis using advanced visualization techniques</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section class="section">
+                    <h2>Key Projects</h2>
+                    <div class="project-item">
+                        <h3>Deep Learning Multimodal Portfolio - Django Web App</h3>
+                        <p class="description">Developed a comprehensive Django application integrating multiple deep learning models (ANN, CNN, VGG16, RNN, LSTM) with RESTful APIs. Implemented real-time model inference, user authentication, and Docker containerization. Achieved 95% uptime and 40% inference time reduction through model optimization and caching strategies.</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>E-commerce API with Stripe Integration</h3>
+                        <p class="description">Built a scalable e-commerce backend using Django Rest Framework with secure Stripe payment processing. Implemented JWT authentication, real-time inventory tracking, and automated order processing. Developed comprehensive API documentation and achieved 99.9% payment success rate with robust error handling.</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>Task Management System - Django & React</h3>
+                        <p class="description">Engineered a full-stack task management application with WebSocket real-time updates and role-based access control. Implemented automated task scheduling, progress tracking, and team collaboration features. Reduced task completion time by 35% through efficient workflow automation and intuitive UI/UX design.</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>Face Recognition System</h3>
+                        <p class="description">Developed a secure face recognition system using OpenCV and deep learning models. Implemented real-time face detection, feature extraction, and matching algorithms with multi-threading support. Integrated with existing security systems and achieved 99% accuracy in controlled environments with optimized performance.</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>COVID-19 Analysis Dashboard</h3>
+                        <p class="description">Created an interactive data visualization platform using Django, React, and D3.js. Implemented real-time data fetching, automated processing pipelines, and interactive charts. Optimized database queries and caching for sub-second response times, serving 10,000+ daily users with 99.9% uptime.</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>NursesCatalyst Educational Platform <span class="project-link">(nursescatalyst.com)</span></h3>
+                        <p class="description">Developed a comprehensive educational platform for nursing professionals with secure authentication, role-based access control, and dynamic content management. Implemented automated testing, real-time progress tracking, and interactive learning modules.</p>
+                    </div>
+                    <div class="project-item">
+                        <h3>TechSkyShop Investment & E-Commerce Platform <span class="project-link">(techskyshop.com)</span></h3>
+                        <p class="description">Built a full-featured investment and e-commerce platform with secure payment processing, real-time portfolio tracking, and automated investment recommendations.</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-column">
+                <!-- Technical Skills -->
+                <section class="section">
+                    <h2>Technical Skills</h2>
+                    <div class="skill-category">Languages</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">R</span>
+                        <span class="skill-item">HTML5</span>
+                        <span class="skill-item">CSS3</span>
+                        <span class="skill-item">SQL</span>
+                    </div>
+
+                    <div class="skill-category">Frameworks</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Django</span>
+                        <span class="skill-item">DRF</span>
+                        <span class="skill-item">React</span>
+                        <span class="skill-item">Flask</span>
+                        <span class="skill-item">Bootstrap</span>
+                    </div>
+
+                    <div class="skill-category">Databases</div>
+                    <div class="skill-list">
+                        <span class="skill-item">PostgreSQL</span>
+                        <span class="skill-item">MongoDB</span>
+                        <span class="skill-item">Redis</span>
+                        <span class="skill-item">MySQL</span>
+                    </div>
+
+                    <div class="skill-category">DevOps & Cloud</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Docker</span>
+                        <span class="skill-item">Kubernetes</span>
+                        <span class="skill-item">AWS</span>
+                        <span class="skill-item">CI/CD</span>
+                        <span class="skill-item">Git</span>
+                    </div>
+
+                    <div class="skill-category">ML Frameworks & Libraries</div>
+                    <div class="skill-list">
+                        <span class="skill-item">TensorFlow</span>
+                        <span class="skill-item">Keras</span>
+                        <span class="skill-item">PyTorch</span>
+                        <span class="skill-item">Scikit-learn</span>
+                    </div>
+
+                    <div class="skill-category">Web Scraping</div>
+                    <div class="skill-list">
+                        <span class="skill-item">BeautifulSoup</span>
+                        <span class="skill-item">Selenium</span>
+                        <span class="skill-item">Scrapy</span>
+                    </div>
+                </section>
+
+                <!-- Professional Skills -->
+                <section class="section">
+                    <h2>Professional Skills</h2>
+                    <div class="skill-category">Leadership</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Team Management</span>
+                        <span class="skill-item">Strategic Planning</span>
+                        <span class="skill-item">Decision Making</span>
+                    </div>
+                    <div class="skill-category">Communication</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Public Speaking</span>
+                        <span class="skill-item">Technical Writing</span>
+                        <span class="skill-item">Presentation</span>
+                    </div>
+                    <div class="skill-category">Management</div>
+                    <div class="skill-list">
+                        <span class="skill-item">Project Management</span>
+                        <span class="skill-item">Time Management</span>
+                        <span class="skill-item">Problem-Solving</span>
+                    </div>
+                </section>
+
+                <!-- Languages & Certifications -->
+                <section class="section languages-certs">
+                    <div>
+                        <h2>Languages</h2>
+                        <ul class="compact-list">
+                            <li>English (Fluent)</li>
+                            <li>Kinyarwanda (Native)</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2>Key Certifications</h2>
+                        <div class="cert-item">
+                            <h3>Kubernetes and Cloud Native Associate (KCNA)</h3>
+                            <p class="description">Container orchestration, microservices architecture, and cloud-native development practices</p>
+                            <p class="date">2025</p>
+                        </div>
+                        <div class="cert-item">
+                            <h3>ALX Software Development Program</h3>
+                            <p class="description">Comprehensive full-stack development training covering modern web technologies, system design, and software engineering best practices</p>
+                            <p class="date">2024</p>
+                        </div>
+                        <div class="cert-item">
+                            <h3>Django REST Framework Certification</h3>
+                            <p class="description">Advanced API development, authentication, serialization, and performance optimization techniques</p>
+                            <p class="date">2023</p>
+                        </div>
+                        <div class="cert-item">
+                            <h3>Andela React Learning Program</h3>
+                            <p class="description">Modern React development, state management, hooks, and advanced frontend architecture</p>
+                            <p class="date">2024</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'mm',
+                format: 'a4',
+                compress: true
+            });
+
+            const page = document.querySelector('.page');
+
+            html2canvas(page, {
+                scale: 3,
+                useCORS: true,
+                logging: false,
+                backgroundColor: '#ffffff',
+                width: page.offsetWidth,
+                height: page.offsetHeight
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/jpeg', 0.95);
+                doc.addImage(imgData, 'JPEG', 0, 0, 210, 297);
+                doc.save('Naphtal_USABYUWERA_Resume.pdf');
+            });
+        }
+    </script>
+</body>
+</html>

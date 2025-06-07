@@ -89,6 +89,16 @@
         color: rgb(104, 132, 162);
         transform: translateY(-3px) scale(1.1);
     }
+    .social-icon-svg {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+        transition: all 0.3s ease;
+    }
+
+    .social-icons a:hover .social-icon-svg {
+        transform: scale(1.1); /* Optional hover effect */
+    }
     @media (max-width: 768px) {
         .contact-info, .contact-form {
             padding: 2rem;
@@ -112,13 +122,19 @@
                 </div>
                 <div class="contact-method">
                     <i class="bi bi-geo-alt"></i>
-                    <span>Viayawada, India</span>
+                    <span>Kigali, Rwanda</span>
                 </div>
                 <div class="social-icons">
                     <a href="https://www.linkedin.com/in/usa-naphtal/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
                     <a href="https://www.facebook.com/Naphtal112/" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a>
                     <a href="https://www.instagram.com/naphtal112/" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
                     <a href="https://t.me/awisdomman" target="_blank" rel="noopener noreferrer"><i class="bi bi-telegram"></i></a>
+                    <a href="https://github.com/usanaphtal112" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github-square"></i></a>
+                    <a href="https://www.kaggle.com/usabyuwera" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-kaggle"></i></a>
+                    <!-- Hugging Face Icon -->
+                    <a href="https://huggingface.co/usanaphtal" target="_blank" rel="noopener noreferrer">
+                        <img src="{% static 'images/Hugging Face_idJ6-I79C__0.svg' %}" alt="Hugging Face" class="social-icon-svg">
+                    </a>
                 </div>
             </div>
             <div class="col-lg-7 contact-form">
