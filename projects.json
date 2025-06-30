@@ -1,5 +1,15 @@
 [
   {
+    "title": "Meeting Tasks & Minutes",
+    "image": "images/meeting-tasks-minutes.png",
+    "description": "An AI-powered web application that extracts actionable tasks and summaries from meeting transcripts using LLMs. Built with Flask and Docker, it integrates HuggingFace APIs to process text data and generate insightful outputs for productivity and collaboration.",
+    "tools": ["Flask", "Docker", "HuggingFace API", "LLM", "Python"],
+    "category": "Natural Language Processing",
+    "testLink": "https://huggingface.co/spaces/usanaphtal/Meeting-tasks-minutes",
+    "repositoryLink": "https://huggingface.co/spaces/usanaphtal/Meeting-tasks-minutes/tree/main",
+    "backendDocsLink": "#"
+  },
+  {
     "title": "Deep Learning for Multimodal Portfolio integrated in Django web application",
     "image": "images/multimodel-portifolio-1.jpg",
     "description": "A comprehensive web application built on Django framework, incorporating various deep learning models for prediction and analysis. It serves as a versatile platform for experimenting with and evaluating different types of neural networks including ANN, CNN, VGG16, RNN, LSTM, BiRNN, and GRU.",
@@ -34,7 +44,7 @@
     "image": "images/uruyange-platform.png",
     "description": "A platform connecting consumers directly with local farmers to promote healthy living and support local agriculture.",
     "tools": ["Web Development"],
-    "category": "Cultural Platform",
+    "category": "Agri - Commerce Platform",
     "testLink": "https://uruyange.com/",
     "repositoryLink": "#",
     "backendDocsLink": "#"

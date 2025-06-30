@@ -2,37 +2,66 @@
 {% load static %}
 
 {% block content %}
-<style>
-
-</style>
-<div class="container mb-5">
+<div class="container-fluid mb-5">
     {% include "pages/hero.html" %}
 </div>
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     {% include "pages/services.html" %}
 </div>
-
 <div class="container-fluid">
     <section class="featured-projects">
-
-        <h2 class="section-title text-light">Featured Projects</h2>
-
-        {% for project in projectsData %}
-        <div class="project-container {% if forloop.counter|divisibleby:2 %}reverse{% endif %}">
-            <div class="project-info">
-                <h3 class="project-title">{{ project.title }}</h3>
-                <p class="project-type">{{ project.type }}</p>
-                <p class="project-description">{{ project.description }}</p>
-                <a href="{% url 'project_work' %}" class="btn-case-study">View Case Study</a>
-            </div>
-            <div class="project-image">
-                <img src="{% static project.image %}" alt="{{ project.title }} screenshot">
+        <h2 class="section-title">Featured Projects</h2>
+        {% for project in projectsData|slice:":2" %}
+        <div class="project-card">
+            <div class="row align-items-center">
+                <div class="col-lg-6 {% if forloop.counter|divisibleby:2 %}order-lg-2{% endif %}">
+                    <div class="project-image">
+                        <img src="{% static project.image %}" alt="{{ project.title }} screenshot" loading="lazy">
+                    </div>
+                </div>
+                <div class="col-lg-6 {% if forloop.counter|divisibleby:2 %}order-lg-1{% endif %}">
+                    <div class="project-category">{{ project.category|default:"Web Development" }}</div>
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-description">{{ project.description }}</p>
+                    {% if project.tools %}
+                    <div class="tools-section">
+                        <h4 class="tools-title">Technologies Used</h4>
+                        <div class="tools-container">
+                            {% for tool in project.tools %}
+                            <span class="tool-tag">{{ tool }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="project-actions">
+                        <button class="btn-action btn-primary-action"
+                                data-bs-toggle="modal"
+                                data-bs-target="#contactModal"
+                                data-project="{{ project.title }}">
+                            <i class="bi bi-chat-dots"></i>
+                            Contact Me
+                        </button>
+                        {% if project.testLink and project.testLink != "#" %}
+                        <a href="{{ project.testLink }}" target="_blank" rel="noopener noreferrer"
+                           class="btn-action btn-secondary-action">
+                            <i class="bi bi-eye"></i>
+                            Live Demo
+                        </a>
+                        {% endif %}
+                        {% if project.repositoryLink and project.repositoryLink != "#" %}
+                        <a href="{{ project.repositoryLink }}" target="_blank" rel="noopener noreferrer"
+                           class="btn-action btn-tertiary-action">
+                            <i class="bi bi-github"></i>
+                            Source Code
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
         {% endfor %}
-
-        <div class="view-more-projects">
-            <a href="{% url 'project_work' %}" class="btn btn-secondary">View More Projects</a>
+        <div class="view-more-projects" style="text-align:center; margin-top:2rem;">
+            <a href="{% url 'project_work' %}" class="btn-action btn-secondary-action">View More Projects</a>
         </div>
     </section>
 </div>
