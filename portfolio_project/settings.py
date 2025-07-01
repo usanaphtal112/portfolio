@@ -138,3 +138,5 @@ DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 
 # EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+TELEGRAM_BOT_TOKEN = config("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = config("TELEGRAM_CHAT_ID")

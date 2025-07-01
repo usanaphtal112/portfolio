@@ -5,6 +5,7 @@ from .views import (
     ResumeView,
     ContactMeView,
     ProjectContactView,
+    handle_chat_message,
 )
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path("resume/", ResumeView.as_view(), name="resume_view"),
     path("contact/me/", ContactMeView.as_view(), name="contact_me_view"),
     path("project/contact/", ProjectContactView.as_view(), name="project_contact_me"),
+    path("api/chat/", handle_chat_message, name="chat_api"),
 ]

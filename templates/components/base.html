@@ -38,6 +38,14 @@
             {% endfor %}
         </div>
 
+        <!-- Chat Button - MOVED BEFORE MAIN CONTENT -->
+        <div class="chat-button">
+            <i class="bi bi-chat-dots"></i>
+        </div>
+
+        <!-- Chat Window - MOVED BEFORE MAIN CONTENT -->
+        {% include 'chats/chat.html' %}
+
         <!-- Main Content Area -->
         <main class="container-fluid">
             {% block content %}{% endblock %}
@@ -49,14 +57,6 @@
                 {% include 'components/footer.html' %}
             {% endblock %}
         </footer>
-
-        <!-- Chat Button -->
-        <div class="chat-button">
-            <i class="bi bi-chat-dots"></i>
-        </div>
-
-        <!-- Chat Window -->
-        {% include 'chats/chat.html' %}
     </div>
 
     <!-- Scripts -->
