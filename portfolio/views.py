@@ -8,9 +8,12 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_http_methods
 from django.conf import settings
+import uuid
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from .forms import ContactForm
+
+ACTIVE_REPLY_SESSIONS = {}
 
 
 class HomePageView(TemplateView):
@@ -129,10 +132,48 @@ class ProjectContactView(View):
         return render(request, self.template_name, {"form": form})
 
 
-def send_telegram_message(message, user_info=None):
-    """Send message to your Telegram"""
+def generate_reply_token():
+    """Generate a unique reply token"""
+    return str(uuid.uuid4())
+
+
+def create_reply_session(original_message, user_info):
+    """Create a temporary reply session"""
+    token = generate_reply_token()
+    session_data = {
+        "original_message": original_message,
+        "user_info": user_info,
+        "created_at": datetime.now(),
+        "messages": [],  # Store conversation history
+        "active": True,
+    }
+    ACTIVE_REPLY_SESSIONS[token] = session_data
+    return token
+
+
+def cleanup_expired_sessions():
+    """Clean up expired sessions (older than 24 hours)"""
+    current_time = datetime.now()
+    expired_tokens = []
+
+    for token, session in ACTIVE_REPLY_SESSIONS.items():
+        if current_time - session["created_at"] > timedelta(hours=24):
+            expired_tokens.append(token)
+
+    for token in expired_tokens:
+        del ACTIVE_REPLY_SESSIONS[token]
+
+
+def send_telegram_message(message, user_info=None, reply_token=None):
+    """Send message to your Telegram with reply link"""
     bot_token = settings.TELEGRAM_BOT_TOKEN
     chat_id = settings.TELEGRAM_CHAT_ID
+
+    # Create reply URL if token is provided
+    reply_url = ""
+    if reply_token:
+        base_url = getattr(settings, "BASE_URL", "http://localhost:8000")
+        reply_url = f"{base_url}/chat/reply/{reply_token}/"
 
     # Format the message nicely
     formatted_message = f"""
@@ -144,11 +185,11 @@ def send_telegram_message(message, user_info=None):
 📱 User Agent: {user_info.get('user_agent', 'Unknown') if user_info else 'Unknown'}
 
 ---
-Reply directly to this chat to respond!
+{f'🔗 Reply Link: {reply_url}' if reply_url else 'Reply directly to this chat to respond!'}
+⏰ Link expires in 24 hours
     """
 
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-
     data = {"chat_id": chat_id, "text": formatted_message, "parse_mode": "HTML"}
 
     try:
@@ -169,27 +210,142 @@ def handle_chat_message(request):
         if not message:
             return JsonResponse({"error": "Message is required"}, status=400)
 
+        # Clean up expired sessions
+        cleanup_expired_sessions()
+
         # Get user info for better tracking
         user_info = {
             "ip": get_client_ip(request),
             "user_agent": request.META.get("HTTP_USER_AGENT", "Unknown"),
         }
 
-        # Send to Telegram
-        telegram_response = send_telegram_message(message, user_info)
+        # Create reply session
+        reply_token = create_reply_session(message, user_info)
+
+        # Send to Telegram with reply link
+        telegram_response = send_telegram_message(message, user_info, reply_token)
 
         # You can also send an email as backup
-        send_email_notification(message, user_info)
+        # send_email_notification(message, user_info, reply_token)
 
         return JsonResponse(
             {
                 "success": True,
                 "bot_response": "Thanks for your message! I'll get back to you soon. You can also reach me directly at usanaphtal112@gmail.com",
+                "reply_token": reply_token,
             }
         )
 
     except Exception as e:
         return JsonResponse({"error": str(e)}, status=500)
+
+
+def reply_chat_view(request, token):
+    """Handle reply chat interface"""
+    cleanup_expired_sessions()
+
+    # Check if token exists and is valid
+    if token not in ACTIVE_REPLY_SESSIONS:
+        return render(request, "chats/reply_expired.html")
+
+    session_data = ACTIVE_REPLY_SESSIONS[token]
+
+    # Check if session is still active
+    if not session_data.get("active", False):
+        return render(request, "chats/reply_expired.html")
+
+    context = {
+        "token": token,
+        "original_message": session_data["original_message"],
+        "user_info": session_data["user_info"],
+        "messages": session_data["messages"],
+        "created_at": session_data["created_at"],
+    }
+
+    return render(request, "chats/reply_chat.html", context)
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def handle_reply_message(request, token):
+    """Handle reply messages from you"""
+    try:
+        cleanup_expired_sessions()
+
+        # Check if token exists and is valid
+        if token not in ACTIVE_REPLY_SESSIONS:
+            return JsonResponse({"error": "Session expired or invalid"}, status=400)
+
+        session_data = ACTIVE_REPLY_SESSIONS[token]
+
+        if not session_data.get("active", False):
+            return JsonResponse({"error": "Session expired"}, status=400)
+
+        data = json.loads(request.body)
+        reply_message = data.get("message", "").strip()
+
+        if not reply_message:
+            return JsonResponse({"error": "Message is required"}, status=400)
+
+        # Add your reply to the conversation
+        message_data = {
+            "sender": "admin",
+            "message": reply_message,
+            "timestamp": datetime.now().isoformat(),
+        }
+        session_data["messages"].append(message_data)
+
+        # Store the reply in the shared session dict for user polling
+        session_data["pending_reply"] = {
+            "reply": reply_message,
+            "timestamp": datetime.now().isoformat(),
+        }
+
+        return JsonResponse({"success": True, "message": "Reply sent successfully!"})
+
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def check_reply_status(request):
+    """Check if there's a reply for the user"""
+    try:
+        data = json.loads(request.body)
+        token = data.get("token")
+
+        if not token:
+            return JsonResponse({"has_reply": False})
+
+        # Check if there's a pending reply in the shared session dict
+        if token in ACTIVE_REPLY_SESSIONS:
+            session_data = ACTIVE_REPLY_SESSIONS[token]
+            pending_reply = session_data.get("pending_reply")
+            if pending_reply:
+                # Remove after delivering
+                reply_text = pending_reply["reply"]
+                del session_data["pending_reply"]
+                return JsonResponse(
+                    {
+                        "has_reply": True,
+                        "reply": pending_reply["reply"],
+                        "timestamp": pending_reply["timestamp"],
+                    }
+                )
+
+        return JsonResponse({"has_reply": False})
+
+    except Exception as e:
+        return JsonResponse({"has_reply": False})
+
+
+def close_reply_session(request, token):
+    """Close a reply session"""
+    if token in ACTIVE_REPLY_SESSIONS:
+        ACTIVE_REPLY_SESSIONS[token]["active"] = False
+
+    return JsonResponse({"success": True, "message": "Session closed"})
 
 
 def get_client_ip(request):
@@ -202,27 +358,35 @@ def get_client_ip(request):
     return ip
 
 
-def send_email_notification(message, user_info):
-    """Send email notification as backup"""
-    from django.core.mail import send_mail
-    from django.conf import settings
+# def send_email_notification(message, user_info, reply_token=None):
+#     """Send email notification as backup"""
+#     from django.core.mail import send_mail
+#     from django.conf import settings
 
-    subject = "New Portfolio Chat Message"
-    email_message = f"""
-    New message from your portfolio:
+#     reply_url = ""
+#     if reply_token:
+#         base_url = getattr(settings, "BASE_URL", "http://localhost:8000")
+#         reply_url = f"{base_url}/chat/reply/{reply_token}/"
 
-    Message: {message}
-    Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
-    IP: {user_info.get('ip', 'Unknown')}
-    User Agent: {user_info.get('user_agent', 'Unknown')}
-    """
+#     subject = "New Portfolio Chat Message"
+#     email_message = f"""
+#     New message from your portfolio:
 
-    try:
-        send_mail(
-            subject,
-            email_message,
-            settings.DEFAULT_FROM_EMAIL,
-            fail_silently=True,
-        )
-    except Exception as e:
-        pass
+#     Message: {message}
+#     Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+#     IP: {user_info.get('ip', 'Unknown')}
+#     User Agent: {user_info.get('user_agent', 'Unknown')}
+
+#     {f'Reply Link: {reply_url}' if reply_url else ''}
+#     """
+
+#     try:
+#         send_mail(
+#             subject,
+#             email_message,
+#             settings.DEFAULT_FROM_EMAIL,
+#             [settings.DEFAULT_FROM_EMAIL],  # Send to yourself
+#             fail_silently=True,
+#         )
+#     except Exception as e:
+#         pass

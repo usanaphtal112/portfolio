@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let isAwaitingResponse = false;
     let messageCount = 0;
+    let currentReplyToken = null;
+    let replyCheckInterval = null;
 
     // Initialize chat
     initializeChat();
@@ -116,6 +118,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function closeChat() {
         chatPopup.style.display = 'none';
 
+        // Stop reply checking when chat is closed
+        if (replyCheckInterval) {
+            clearInterval(replyCheckInterval);
+            replyCheckInterval = null;
+        }
+
         // Restore body scroll on mobile
         if (window.innerWidth <= 768) {
             document.body.style.overflow = '';
@@ -169,6 +177,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Add bot response
                 appendMessage(data.bot_response, 'bot');
 
+                // Store reply token if provided
+                if (data.reply_token) {
+                    currentReplyToken = data.reply_token;
+                    startReplyChecking();
+                }
+
                 // Add follow-up suggestions after first message
                 if (messageCount === 1) {
                     setTimeout(() => {
@@ -187,9 +201,54 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function appendMessage(message, sender) {
+    function startReplyChecking() {
+        // Don't start multiple intervals
+        if (replyCheckInterval) {
+            clearInterval(replyCheckInterval);
+        }
+
+        // Check for replies every 5 seconds
+        replyCheckInterval = setInterval(async () => {
+            if (!currentReplyToken) return;
+
+            try {
+                const response = await fetch('/api/chat/check-reply/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({
+                        token: currentReplyToken
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.has_reply) {
+                    appendMessage(data.reply, 'bot', false, false, "✨ <em>This was a direct reply from Naphtal!</em>");
+                    // Stop checking for this token
+                    currentReplyToken = null;
+                    clearInterval(replyCheckInterval);
+                    replyCheckInterval = null;
+                }
+            } catch (error) {
+                console.error('Reply check error:', error);
+            }
+        }, 5000); // Check every 5 seconds
+
+        // Stop checking after 30 minutes to prevent endless polling
+        setTimeout(() => {
+            if (replyCheckInterval) {
+                clearInterval(replyCheckInterval);
+                replyCheckInterval = null;
+            }
+        }, 30 * 60 * 1000); // 30 minutes
+    }
+
+    function appendMessage(message, sender, isHtml = false, isSystem = false, replyNotice = null) {
         const messageContainer = document.createElement('div');
-        messageContainer.className = `message-container ${sender}`;
+        messageContainer.className = isSystem ? 'system-message' : `message-container ${sender}`;
 
         const isUser = sender === 'user';
         const avatarSrc = isUser
@@ -198,8 +257,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
 
-        // Format message (handle line breaks)
-        const formattedMessage = message.replace(/\n/g, '<br>');
+        // Format message (handle line breaks or HTML)
+        const formattedMessage = isHtml ? message : message.replace(/\n/g, '<br>');
+
+        let noticeHtml = '';
+        if (replyNotice) {
+            noticeHtml = `<div class="reply-notice">${replyNotice}</div>`;
+        }
 
         messageContainer.innerHTML = `
             ${!isUser ? `<img src="${avatarSrc}" alt="avatar" class="message-avatar">` : ''}
@@ -207,6 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="message-bubble">
                     ${formattedMessage}
                 </div>
+                ${noticeHtml}
                 <div class="message-time">${currentTime}</div>
             </div>
             ${isUser ? `<img src="${avatarSrc}" alt="avatar" class="message-avatar">` : ''}
@@ -335,6 +400,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Escape to close chat
         if (e.key === 'Escape' && chatPopup.style.display !== 'none') {
             closeChat();
+        }
+    });
+
+    // Clean up intervals when page is unloaded
+    window.addEventListener('beforeunload', function() {
+        if (replyCheckInterval) {
+            clearInterval(replyCheckInterval);
         }
     });
 

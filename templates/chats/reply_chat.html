@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reply to Chat - Naphtal USABYUWERA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .chat-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .original-message {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin: 20px;
+            border-radius: 8px;
+        }
+
+        .conversation-area {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .message.admin {
+            justify-content: flex-end;
+        }
+
+        .message.user {
+            justify-content: flex-start;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            word-wrap: break-word;
+        }
+
+        .message.admin .message-bubble {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.user .message-bubble {
+            background: #e9ecef;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message-time {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .reply-area {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .reply-input {
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            padding: 12px 20px;
+            resize: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .reply-input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            transition: transform 0.2s ease;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+            color: white;
+        }
+
+        .session-info {
+            background: #fff3cd;
+            color: #856404;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .success-message, .error-message {
+            padding: 10px 20px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 10px 20px;
+            text-align: center;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Header -->
+        <div class="chat-header">
+            <h4 class="mb-1">
+                <i class="bi bi-chat-dots"></i>
+                Reply to Portfolio Chat
+            </h4>
+            <small>Respond to visitor message</small>
+        </div>
+
+        <!-- Session Info -->
+        <div class="session-info">
+            <i class="bi bi-clock"></i>
+            Session created: {{ created_at|date:"M d, Y H:i" }} |
+            <i class="bi bi-geo-alt"></i>
+            IP: {{ user_info.ip }} |
+            <i class="bi bi-hourglass-split"></i>
+            Expires in 24 hours
+        </div>
+
+        <!-- Original Message -->
+        <div class="original-message">
+            <h6 class="text-muted mb-2">
+                <i class="bi bi-envelope"></i>
+                Original Message:
+            </h6>
+            <p class="mb-0">{{ original_message }}</p>
+        </div>
+
+        <!-- Messages/Success/Error Display -->
+        <div id="messageDisplay" style="display: none;"></div>
+        <div class="typing-indicator" id="typingIndicator">
+            <i class="bi bi-three-dots"></i>
+            Sending your reply...
+        </div>
+
+        <!-- Conversation Area -->
+        <div class="conversation-area" id="conversationArea">
+            {% for message in messages %}
+                <div class="message {{ message.sender }}">
+                    <div class="message-bubble">
+                        {{ message.message }}
+                        <div class="message-time">
+                            {{ message.timestamp|date:"H:i" }}
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="text-center text-muted py-4">
+                    <i class="bi bi-chat-text" style="font-size: 2rem;"></i>
+                    <p class="mt-2">No conversation yet. Send your reply below!</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Reply Area -->
+        <div class="reply-area">
+            <div class="row align-items-end">
+                <div class="col">
+                    <textarea
+                        class="form-control reply-input"
+                        id="replyInput"
+                        placeholder="Type your reply here..."
+                        rows="2"
+                        maxlength="1000"></textarea>
+                </div>
+                <div class="col-auto">
+                    <button class="btn send-btn" id="sendReply" type="button">
+                        <i class="bi bi-send"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="mt-2 d-flex justify-content-between align-items-center">
+                <small class="text-muted">
+                    <i class="bi bi-info-circle"></i>
+                    Your reply will be sent to the visitor instantly
+                </small>
+                <button class="btn btn-sm btn-outline-danger" id="closeSession">
+                    <i class="bi bi-x-circle"></i>
+                    Close Session
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = '{{ token }}';
+            const replyInput = document.getElementById('replyInput');
+            const sendButton = document.getElementById('sendReply');
+            const messageDisplay = document.getElementById('messageDisplay');
+            const typingIndicator = document.getElementById('typingIndicator');
+            const conversationArea = document.getElementById('conversationArea');
+            const closeSessionBtn = document.getElementById('closeSession');
+
+            // Auto-resize textarea
+            replyInput.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+            });
+
+            // Send reply
+            sendButton.addEventListener('click', sendReply);
+            replyInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendReply();
+                }
+            });
+
+            async function sendReply() {
+                const message = replyInput.value.trim();
+                if (!message) return;
+
+                // Show typing indicator
+                typingIndicator.style.display = 'block';
+                sendButton.disabled = true;
+                replyInput.disabled = true;
+
+                try {
+                    const response = await fetch(`/api/chat/reply/${token}/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': getCookie('csrftoken')
+                        },
+                        body: JSON.stringify({
+                            message: message
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (data.success) {
+                        // Add message to conversation
+                        addMessageToConversation(message, 'admin');
+
+                        // Clear input
+                        replyInput.value = '';
+                        replyInput.style.height = 'auto';
+
+                        // Show success message
+                        showMessage('Reply sent successfully!', 'success');
+
+                    } else {
+                        showMessage('Error: ' + (data.error || 'Unknown error'), 'error');
+                    }
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    showMessage('Connection error. Please try again.', 'error');
+                } finally {
+                    typingIndicator.style.display = 'none';
+                    sendButton.disabled = false;
+                    replyInput.disabled = false;
+                    replyInput.focus();
+                }
+            }
+
+            function addMessageToConversation(message, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}`;
+
+                const currentTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+                messageDiv.innerHTML = `
+                    <div class="message-bubble">
+                        ${message.replace(/\n/g, '<br>')}
+                        <div class="message-time">${currentTime}</div>
+                    </div>
+                `;
+
+                conversationArea.appendChild(messageDiv);
+                conversationArea.scrollTop = conversationArea.scrollHeight;
+
+                // Remove empty state if exists
+                const emptyState = conversationArea.querySelector('.text-center.text-muted');
+                if (emptyState) {
+                    emptyState.remove();
+                }
+            }
+
+            function showMessage(text, type) {
+                messageDisplay.className = type === 'success' ? 'success-message' : 'error-message';
+                messageDisplay.textContent = text;
+                messageDisplay.style.display = 'block';
+
+                setTimeout(() => {
+                    messageDisplay.style.display = 'none';
+                }, 3000);
+            }
+
+            // Close session
+            closeSessionBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to close this chat session?')) {
+                    fetch(`/api/chat/close/${token}/`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': getCookie('csrftoken')
+                        }
+                    }).then(() => {
+                        window.close();
+                    });
+                }
+            });
+
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+        });
+    </script>
+</body>
+</html>
