@@ -8,7 +8,7 @@
 <div class="container-fluid mt-5">
     {% include "pages/services.html" %}
 </div>
-<div class="container-fluid">
+<div class="container">
     <section class="featured-projects">
         <h2 class="section-title">Featured Projects</h2>
         {% for project in projectsData|slice:":2" %}
@@ -20,12 +20,11 @@
                     </div>
                 </div>
                 <div class="col-lg-6 {% if forloop.counter|divisibleby:2 %}order-lg-1{% endif %}">
-                    <div class="project-category">{{ project.category|default:"Web Development" }}</div>
+                    {% comment %} <div class="project-category">{{ project.category|default:"Web Development" }}</div> {% endcomment %}
                     <h3 class="project-title">{{ project.title }}</h3>
                     <p class="project-description">{{ project.description }}</p>
                     {% if project.tools %}
                     <div class="tools-section">
-                        <h4 class="tools-title">Technologies Used</h4>
                         <div class="tools-container">
                             {% for tool in project.tools %}
                             <span class="tool-tag">{{ tool }}</span>

@@ -5,16 +5,29 @@
     --text-primary: #ffffff;
     --text-secondary: #b0b0b0;
     --text-muted: #888888;
-    --accent-primary: #6366f1;
-    --accent-secondary: #06d6a0;
-    --accent-tertiary: #ff6b6b;
+    --accent-primary: #007bff;
+    --accent-secondary: #0056b3;
+    --accent-tertiary: #66b3ff;
     --border-color: #333333;
     --shadow-color: rgba(0, 0, 0, 0.5);
 }
+
+:root {
+    --primary-blue: #007bff;
+    --primary-blue-hover: #0056b3;
+    --dark-bg: #1a2234;
+    --darker-bg: #1a2234;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #888888;
+    --border-color: #333333;
+}
+
 .featured-projects {
     padding: 3rem 0;
     position: relative;
 }
+
 .featured-projects::before {
     content: '';
     position: absolute;
@@ -23,11 +36,12 @@
     right: 0;
     bottom: 0;
     background:
-        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(6, 214, 160, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(0, 123, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 86, 179, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(102, 179, 255, 0.1) 0%, transparent 50%);
     pointer-events: none;
 }
+
 .section-title {
     color: var(--text-primary);
     font-weight: 800;
@@ -40,6 +54,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
 .section-title::after {
     content: '';
     position: absolute;
@@ -51,6 +66,7 @@
     background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
     border-radius: 2px;
 }
+
 .project-card {
     background: var(--bg-card);
     border-radius: 20px;
@@ -63,6 +79,7 @@
     box-shadow: 0 10px 40px var(--shadow-color);
     animation: fadeInUp 0.6s ease-out;
 }
+
 .project-card::before {
     content: '';
     position: absolute;
@@ -72,17 +89,20 @@
     height: 4px;
     background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-tertiary));
 }
+
 .project-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 60px var(--shadow-color);
     border-color: var(--accent-primary);
 }
+
 .project-image {
     position: relative;
     overflow: hidden;
     border-radius: 16px;
     margin-bottom: 1.5rem;
 }
+
 .project-image img {
     width: 100%;
     height: 300px;
@@ -90,9 +110,11 @@
     transition: transform 0.4s ease;
     border-radius: 16px;
 }
+
 .project-image:hover img {
     transform: scale(1.05);
 }
+
 .project-category {
     display: inline-block;
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
@@ -105,6 +127,7 @@
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
 .project-title {
     color: var(--text-primary);
     font-weight: 700;
@@ -112,49 +135,57 @@
     margin-bottom: 1rem;
     line-height: 1.3;
 }
+
 .project-description {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
     line-height: 1.6;
 }
+
 .tools-section {
     margin-bottom: 2rem;
 }
+
 .tools-title {
-    color: var(--accent-secondary);
+    color: var(--accent-tertiary);
     font-weight: 600;
     font-size: 1rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 .tools-container {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
 }
+
 .tool-tag {
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 214, 160, 0.2));
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.2), rgba(0, 86, 179, 0.2));
     color: var(--text-primary);
     padding: 0.6rem 1.2rem;
     border-radius: 25px;
     font-size: 0.9rem;
     font-weight: 500;
-    border: 1px solid rgba(99, 102, 241, 0.3);
+    border: 1px solid rgba(0, 123, 255, 0.3);
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
 }
+
 .tool-tag:hover {
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
 }
+
 .project-actions {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
 }
+
 .btn-action {
     padding: 0.8rem 1.8rem;
     border-radius: 50px;
@@ -168,36 +199,43 @@
     align-items: center;
     gap: 0.5rem;
 }
+
 .btn-primary-action {
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     color: white;
 }
+
 .btn-primary-action:hover {
     background: linear-gradient(135deg, var(--accent-secondary), var(--accent-primary));
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 10px 25px rgba(0, 123, 255, 0.4);
     color: white;
 }
+
 .btn-secondary-action {
     background: transparent;
     color: var(--text-primary);
     border: 2px solid var(--accent-primary);
 }
+
 .btn-secondary-action:hover {
     background: var(--accent-primary);
     color: white;
     transform: translateY(-3px);
 }
+
 .btn-tertiary-action {
     background: transparent;
-    color: var(--accent-secondary);
-    border: 2px solid var(--accent-secondary);
+    color: var(--accent-tertiary);
+    border: 2px solid var(--accent-tertiary);
 }
+
 .btn-tertiary-action:hover {
-    background: var(--accent-secondary);
+    background: var(--accent-tertiary);
     color: white;
     transform: translateY(-3px);
 }
+
 @media (max-width: 768px) {
     .section-title {
         font-size: 2.5rem;
@@ -224,6 +262,7 @@
         padding: 0.5rem 1rem;
     }
 }
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -246,7 +285,7 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 1rem;
-    background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #FF9F1C, #A364D9, #E74C3C, #3498DB, #27AE60);
+    background: #ffffff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: 400% 400%;
@@ -372,7 +411,7 @@
 }
 
 .expand-btn {
-    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    background: #007bff;
     border: none;
     color: white;
     padding: 1rem 2rem;
@@ -391,7 +430,6 @@
 .expand-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(45deg, #ff5252, #26c6da);
 }
 
 .btn-icon {
