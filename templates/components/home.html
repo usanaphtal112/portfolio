@@ -10,7 +10,7 @@
 </div>
 <div class="container">
     <section class="featured-projects">
-        <h2 class="section-title">Featured Projects</h2>
+        <h2 class="section-title" style="color:#ffffff;">Featured Projects</h2>
         {% for project in projectsData|slice:":2" %}
         <div class="project-card">
             <div class="row align-items-center">
@@ -20,14 +20,13 @@
                     </div>
                 </div>
                 <div class="col-lg-6 {% if forloop.counter|divisibleby:2 %}order-lg-1{% endif %}">
-                    {% comment %} <div class="project-category">{{ project.category|default:"Web Development" }}</div> {% endcomment %}
-                    <h3 class="project-title">{{ project.title }}</h3>
-                    <p class="project-description">{{ project.description }}</p>
+                    <h3 class="project-title" style="color:#007bff;">{{ project.title }}</h3>
+                    <p class="project-description" style="color:#b0b0b0;">{{ project.description }}</p>
                     {% if project.tools %}
                     <div class="tools-section">
                         <div class="tools-container">
                             {% for tool in project.tools %}
-                            <span class="tool-tag">{{ tool }}</span>
+                            <span class="tool-tag" style="background:#007bff;color:#ffffff;">{{ tool }}</span>
                             {% endfor %}
                         </div>
                     </div>
@@ -36,20 +35,23 @@
                         <button class="btn-action btn-primary-action"
                                 data-bs-toggle="modal"
                                 data-bs-target="#contactModal"
-                                data-project="{{ project.title }}">
+                                data-project="{{ project.title }}"
+                                style="background:#007bff;color:#ffffff;">
                             <i class="bi bi-chat-dots"></i>
                             Contact Me
                         </button>
                         {% if project.testLink and project.testLink != "#" %}
                         <a href="{{ project.testLink }}" target="_blank" rel="noopener noreferrer"
-                           class="btn-action btn-secondary-action">
+                           class="btn-action btn-secondary-action"
+                           style="color:#007bff;border:2px solid #007bff;">
                             <i class="bi bi-eye"></i>
                             Live Demo
                         </a>
                         {% endif %}
                         {% if project.repositoryLink and project.repositoryLink != "#" %}
                         <a href="{{ project.repositoryLink }}" target="_blank" rel="noopener noreferrer"
-                           class="btn-action btn-tertiary-action">
+                           class="btn-action btn-tertiary-action"
+                           style="color:#007bff;border:2px solid #007bff;">
                             <i class="bi bi-github"></i>
                             Source Code
                         </a>
@@ -60,7 +62,7 @@
         </div>
         {% endfor %}
         <div class="view-more-projects" style="text-align:center; margin-top:2rem;">
-            <a href="{% url 'project_work' %}" class="btn-action btn-secondary-action">View More Projects</a>
+            <a href="{% url 'project_work' %}" class="btn-action btn-secondary-action" style="color:#007bff;border:2px solid #007bff;">View More Projects</a>
         </div>
     </section>
 </div>

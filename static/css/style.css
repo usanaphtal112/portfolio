@@ -1,6 +1,6 @@
 :root {
     --primary-color: #007bff;
-    --secondary-color: #2c3e50;
+    --secondary-color: #b0b0b0;
     --text-color: #ffffff;
     --background-color: #1a2234;
 }
@@ -14,7 +14,7 @@ body {
 }
 
 .navbar {
-    background-color: #1a2234
+    background-color: #1a2234;
 }
 
 .navbar-brand {
@@ -33,11 +33,13 @@ body {
 .btn-primary {
     background-color: var(--primary-color);
     border-color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .btn-primary:hover {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 .highlight {
@@ -63,14 +65,12 @@ body {
     }
 }
 
-/* --------------------------------------------splash screen---------------------------------- */
-
 .splash-screen {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: white;
+    color: var(--text-color);
     font-size: 3rem;
     font-weight: bold;
     text-align: center;
@@ -95,7 +95,6 @@ body {
     }
 }
 
-/* Main Content Styles */
 .main-content {
     display: none;
 }
@@ -103,17 +102,21 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
+    color: var(--primary-color);
 }
 
 p, li {
     font-weight: 400;
+    color: var(--secondary-color);
 }
 
 footer {
     flex-shrink: 0;
     padding: 20px 0;
+    color: var(--secondary-color);
 }
 
 li, a{
     text-decoration: none;
+    color: var(--primary-color);
 }

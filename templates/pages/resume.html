@@ -5,15 +5,30 @@
     :root {
         --bg-primary: #121212;
         --bg-secondary: #1E1E1E;
-        --text-primary: #E0E0E0;
-        --text-secondary: #B0B0B0;
-        --accent-primary: #ffffff;
-        --accent-secondary: #ffffff;
+        --text-primary: #ffffff;
+        --text-secondary: #b0b0b0;
+        --accent-primary: #007bff;
+        --accent-secondary: #007bff;
         --border-color: #3F3F3F;
     }
     body {
         background-color: var(--bg-primary);
         color: var(--text-primary);
+    }
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--accent-primary);
+    }
+    p, li, .lead {
+        color: var(--text-secondary);
+    }
+    .btn {
+        background-color: var(--accent-primary);
+        color: var(--text-primary);
+        border: none;
+    }
+    .btn:hover {
+        background-color: var(--text-primary);
+        color: var(--accent-primary);
     }
 </style>
 <div class="container-fluid p-0" style="background-color: var(--bg-primary);">
@@ -145,7 +160,7 @@
 
                 <!-- Contact Button -->
                 <div class="text-center">
-                    <a href="{% url 'contact_me_view' %}" class="btn px-5 py-3" style="background-color: var(--accent-primary); color: var(--bg-primary); border: none;">Request Full Resume</a>
+                    <a href="{% url 'contact_me_view' %}" class="btn px-5 py-3" style="background-color: var(--accent-primary); color: var(--text-primary); border: none;">Request Full Resume</a>
                 </div>
             </div>
         </div>

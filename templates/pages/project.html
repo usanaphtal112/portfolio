@@ -4,14 +4,62 @@
 {% block content %}
 <style>
     :root {
-        --primary-blue:rgb(39, 103, 171);
-        --primary-blue-hover: #0056b3;
+        --primary-blue: #007bff;
+        --primary-blue-hover: #007bff;
         --dark-bg: #1a2234;
         --darker-bg: #1a2234;
         --text-primary: #ffffff;
         --text-secondary: #b0b0b0;
-        --text-muted: #888888;
+        --text-muted: #b0b0b0;
         --border-color: #333333;
+    }
+    h1, h2, h3, h4, h5, h6, .section-title, .project-title, .skills-title, .cta-title, .skill-category-title {
+        color: var(--primary-blue);
+    }
+    .project-description, .lead, .cta-description, .skill-item, .project-category, .form-label, .form-control, .modal-title, .modal-body, .modal-header, .modal-content, .btn-close, .btn-action, .btn-secondary-action, .btn-tertiary-action, .btn-submit, .tools-title, .tools-section, .tools-container, .tool-tag, .skills-grid, .skills-content, .skills-preview, .cta-section, .cta-buttons, .project-info, .project-actions, .project-item, .project-content, .project-image, .modal-image, .modal-image img, .social-icons, .social-icons a, .form-section, .form-control:focus, .btn-primary-action, .btn-primary-action:hover, .btn-secondary-action:hover, .btn-tertiary-action:hover {
+        color: var(--text-secondary);
+    }
+    .btn-action, .btn-primary-action, .btn-submit {
+        background: var(--primary-blue);
+        color: var(--text-primary);
+        border: none;
+    }
+    .btn-action:hover, .btn-primary-action:hover, .btn-submit:hover {
+        background: var(--text-primary);
+        color: var(--primary-blue);
+    }
+    .btn-secondary-action, .btn-tertiary-action {
+        background: transparent;
+        color: var(--primary-blue);
+        border: 2px solid var(--primary-blue);
+    }
+    .btn-secondary-action:hover, .btn-tertiary-action:hover {
+        background: var(--primary-blue);
+        color: var(--text-primary);
+    }
+    .tool-tag {
+        color: var(--text-primary);
+        border: 1px solid var(--primary-blue);
+    }
+    .tool-tag:hover {
+        background: var(--text-primary);
+        color: var(--primary-blue);
+    }
+    .modal-content {
+        background: var(--darker-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 2rem;
+    }
+    .modal-title {
+        color: var(--primary-blue);
+    }
+    .btn-close {
+        filter: invert(1) grayscale(100%) brightness(200%);
+        opacity: 0.8;
+    }
+    .btn-close:hover {
+        opacity: 1;
     }
 
     body {
@@ -167,7 +215,7 @@
 
     .btn-secondary-action {
         background: transparent;
-        color: var(--text-primary);
+        color: var(--primary-blue);
         border: 2px solid var(--primary-blue);
     }
 
