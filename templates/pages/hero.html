@@ -25,11 +25,10 @@
     .btn-custom {
         font-size: 1rem;
         padding: 0.75rem 1.5rem;
-        border-radius: 30px;
         transition: all 0.3s ease;
         color: #ffffff;
-        background-color: #007bff;
-        border: none;
+        background-color: transparency;
+        border-color: #007bff;
     }
     .btn-custom:hover {
         transform: translateY(-3px);
@@ -108,23 +107,11 @@
                     <span class="highlight">Full Stack Developer</span>
                 </h1>
                 <p class="lead mb-4">
-                    Results-driven Developer with hands-on experience in Data Analytics, Machine Learning and Web Development. Adept at  building scalable applications and deploying predictive models to solve complex, real-world problems. Proficient in Python, Flask, Power BI, and modern ML frameworks like TensorFlow and PyTorch. Known for delivering data-driven solutions that improve decision making and system performance. Passionate about transforming data into actionable insights and contributing to high-impact technical teams in dynamic environments.
+                    I’m a developer specializing in data analytics, machine learning, and web development. I focus on building scalable applications, deploying predictive models, and turning data into actionable insights to deliver impactful solutions.
                 </p>
                 <div class="mb-4">
-                    <a href="{% url 'contact_me_view' %}" class="btn btn-primary btn-custom me-2">Hire me</a>
-                    <a href="{% url 'project_work' %}" class="btn btn-outline-primary btn-custom">View Projects</a>
-                </div>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/usa-naphtal/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i></a>
-                    <a href="https://www.facebook.com/Naphtal112/" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/naphtal112/" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
-                    <a href="https://t.me/awisdomman" target="_blank" rel="noopener noreferrer"><i class="bi bi-telegram"></i></a>
-                    <a href="https://github.com/usanaphtal112" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github-square"></i></a>
-                    <a href="https://www.kaggle.com/usabyuwera" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-kaggle"></i></a>
-                    <!-- Hugging Face Icon -->
-                    <a href="https://huggingface.co/usanaphtal" target="_blank" rel="noopener noreferrer">
-                        <img src="{% static 'images/Hugging Face_idJ6-I79C__0.svg' %}" alt="Hugging Face" class="social-icon-svg">
-                    </a>
+                    {% comment %} <a href="{% url 'contact_me_view' %}" class="btn btn-primary btn-custom me-2">Hire me</a> {% endcomment %}
+                    <a href="{% url 'project_work' %}" class="btn btn-outline-primary btn-custom">Check out my work</a>
                 </div>
             </div>
             <div class="col-lg-6 fadeIn">

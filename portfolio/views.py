@@ -46,6 +46,10 @@ class ResumeView(TemplateView):
     template_name = "pages/resume.html"
 
 
+class AboutMeView(TemplateView):
+    template_name = "pages/aboutme.html"
+
+
 class ContactMeView(View):
     template_name = "pages/contactme.html"
 

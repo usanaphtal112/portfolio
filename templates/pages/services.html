@@ -1,130 +1,361 @@
 {% load static %}
 
-<div class=" container service-spectrum">
+<div class="container service-spectrum">
+    <h1 class="section-title" style="color:#ffffff;">My Services</h1>
+    <p class="section-subtitle">Delivering cutting-edge AI and web solutions to transform your business and drive innovation.</p>
 
-        <h1 class="section-title" style="color:#ffffff;">Service Spectrum</h1>
-        <div class="services-grid" id="servicesGrid">
-            <!-- Initially Visible Services (First 3) -->
-            <div class="service-card visible-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+    <div class="services-grid" id="servicesGrid">
+        <!-- Initially Visible Services (First 6) -->
+        <div class="service-card visible-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/ai_web.png' %}" alt="AI-Powered Web Solutions" class="service-icon">
-                    <h2>AI-Powered Web Solutions</h2>
-                    <p>Integrating advanced AI capabilities into web solutions to enhance functionality and user experience.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>AI-Powered Web Solutions</h3>
+                <p>Integrating advanced AI capabilities into web solutions to enhance functionality and user experience.</p>
             </div>
+        </div>
 
-            <div class="service-card visible-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+        <div class="service-card visible-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/data_analytics.png' %}" alt="Data Analysis & Analytics" class="service-icon">
-                    <h2>Data Analysis & Analytics</h2>
-                    <p>Leveraging advanced analytics techniques to extract meaningful insights from complex datasets and drive data-driven decision making.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>Data Analysis & Analytics</h3>
+                <p>Leveraging advanced analytics techniques to extract meaningful insights from complex datasets and drive data-driven decision making.</p>
             </div>
+        </div>
 
-
-            <div class="service-card visible-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+        <div class="service-card visible-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/custom_ai.png' %}" alt="Custom AI Model Creation" class="service-icon">
-                    <h2>Custom AI Model Creation</h2>
-                    <p>Designing and developing AI models tailored to address specific business challenges.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>Custom AI Model Creation</h3>
+                <p>Designing and developing AI models tailored to address specific business challenges.</p>
             </div>
+        </div>
 
-            <!-- Hidden Services (Initially Hidden) -->
-            <div class="service-card hidden-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+        <div class="service-card visible-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/scalable_saas.png' %}" alt="Scalable SaaS Development" class="service-icon">
-                    <h2>Scalable SaaS Development</h2>
-                    <p>Building robust, cloud-native software-as-a-service platforms tailored to your needs.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>Scalable SaaS Development</h3>
+                <p>Building robust, cloud-native software-as-a-service platforms tailored to your needs.</p>
             </div>
+        </div>
 
-            <div class="service-card hidden-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+        <div class="service-card visible-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/web_scraping.png' %}" alt="Advanced Web Scraping & Data Extraction" class="service-icon">
-                    <h2>Advanced Web Scraping & Data Extraction</h2>
-                    <p>Ethically extracting web data at scale to support data-driven strategies.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>Web Scraping & Data Extraction</h3>
+                <p>Ethically extracting web data at scale to support data-driven strategies.</p>
             </div>
+        </div>
 
-            <div class="service-card hidden-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+        <div class="service-card visible-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/business_transformation.png' %}" alt="AI-Driven Business Transformation" class="service-icon">
-                    <h2>AI-Driven Business Transformation</h2>
-                    <p>Orchestrating comprehensive AI strategies to revolutionize business processes, unlock new revenue streams, and gain a sustainable competitive edge.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>AI-Driven Business Transformation</h3>
+                <p>Orchestrating comprehensive AI strategies to revolutionize business processes and unlock new revenue streams.</p>
             </div>
+        </div>
 
-            <div class="service-card hidden-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+        <!-- Hidden Services (Initially Hidden) -->
+        <div class="service-card hidden-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/predictive_analytics.png' %}" alt="Predictive Analytics & Forecasting" class="service-icon">
-                    <h2>Predictive Analytics & Forecasting</h2>
-                    <p>Developing sophisticated predictive models to forecast market trends, consumer behavior, and operational outcomes, enabling proactive strategic planning.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>Predictive Analytics & Forecasting</h3>
+                <p>Developing sophisticated predictive models to forecast market trends, consumer behavior, and operational outcomes.</p>
             </div>
+        </div>
 
-            <div class="service-card hidden-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+        <div class="service-card hidden-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/ethical_ai.png' %}" alt="Ethical AI & Responsible Data Practices" class="service-icon">
-                    <h2>Ethical AI & Responsible Data Practices</h2>
-                    <p>Implementing ethical AI principles and robust data governance to ensure fairness, transparency, and privacy in all intelligent systems.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>Ethical AI & Responsible Data</h3>
+                <p>Implementing ethical AI principles and robust data governance to ensure fairness, transparency, and privacy.</p>
             </div>
+        </div>
 
-            <div class="service-card hidden-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+        <div class="service-card hidden-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/intelligent_product.png' %}" alt="Intelligent Product Development" class="service-icon">
-                    <h2>Intelligent Product Development</h2>
-                    <p>Designing and building cutting-edge products and features infused with AI, enhancing user experiences and driving innovation.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>Intelligent Product Development</h3>
+                <p>Designing and building cutting-edge products and features infused with AI, enhancing user experiences.</p>
             </div>
+        </div>
 
-            <div class="service-card hidden-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+        <div class="service-card hidden-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/web_api_development.png' %}" alt="Web & API Development" class="service-icon">
-                    <h2>Web & API Development</h2>
-                    <p>Creating robust, scalable web applications and RESTful APIs with modern frameworks and best practices for optimal performance.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>Web & API Development</h3>
+                <p>Creating robust, scalable web applications and RESTful APIs with modern frameworks and best practices.</p>
             </div>
+        </div>
 
-            <div class="service-card hidden-service" style="--accent-color: #007bff;">
-                <div class="service-content">
+        <div class="service-card hidden-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/intelligent_automation.png' %}" alt="Intelligent Automation Systems" class="service-icon">
-                    <h2>Intelligent Automation Systems</h2>
-                    <p>Automating workflows using AI and ML to increase efficiency and reduce manual tasks.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>Intelligent Automation Systems</h3>
+                <p>Automating workflows using AI and ML to increase efficiency and reduce manual tasks.</p>
             </div>
+        </div>
 
-            <div class="service-card hidden-service" style="--accent-color:#007bff;">
-                <div class="service-content">
+        <div class="service-card hidden-service">
+            <div class="service-content">
+                <div class="service-icon-wrapper">
                     <img src="{% static 'images/devops_services.png' %}" alt="DevOps Services" class="service-icon">
-                    <h2>DevOps Services</h2>
-                    <p>Streamlining development and deployment pipelines with CI/CD automation, containerization, and cloud infrastructure management.</p>
-                    <a href="{% url 'project_work' %}" class="btn-view">View Projects</a>
                 </div>
+                <h3>DevOps Services</h3>
+                <p>Streamlining development and deployment pipelines with CI/CD automation, containerization, and cloud infrastructure.</p>
             </div>
         </div>
+    </div>
 
-        <!-- Expand/Collapse Button -->
-        <div class="expand-button-container">
-            <button id="expandBtn" class="expand-btn">
-                <span class="btn-text">View All Services</span>
-                <span class="btn-icon">↓</span>
-            </button>
-        </div>
-
+    <!-- Expand/Collapse Button -->
+    <div class="expand-button-container">
+        <button id="expandBtn" class="expand-btn">
+            <span class="btn-text">Check out my services</span>
+        </button>
+    </div>
 </div>
+
+<style>
+.service-spectrum {
+    padding: 80px 20px;
+    background: transparency;
+    min-height: 100vh;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff !important;
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto 4rem auto;
+    line-height: 1.6;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+}
+
+.service-card {
+    background: transparent;
+    border: 1px solid #4a5568;
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: #6b7280;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.service-content {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.service-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: #4a5568;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+    transition: all 0.3s ease;
+}
+
+.service-card:hover .service-icon-wrapper {
+    background: #5a6478;
+    transform: scale(1.05);
+}
+
+.service-icon {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) saturate(100%) invert(55%) sepia(8%) saturate(878%) hue-rotate(180deg) brightness(118%) contrast(101%);
+}
+
+.service-content h3 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.service-content p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.btn-view {
+    display: inline-block;
+    background: transparent;
+    color: #cbd5e0;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid #6b7280;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.btn-view:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #9ca3af;
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* Hidden services styling */
+.hidden-service {
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hidden-service.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+/* Expand button styling */
+.expand-button-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.expand-btn {
+    background: transparent;
+    border: 2px solid #6b7280;
+    color: #cbd5e0;
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.expand-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.expand-btn:hover::before {
+    left: 100%;
+}
+
+.expand-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border-color: #9ca3af;
+    color: #ffffff;
+}
+
+.expand-btn.expanded {
+    border-color: #6b7280;
+    color: #cbd5e0;
+}
+
+.expand-btn.expanded:hover {
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border-color: #9ca3af;
+    color: #ffffff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-spectrum {
+        padding: 60px 15px;
+    }
+
+    .expand-btn {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+    }
+}
+</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -141,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     service.classList.add('show');
                 }, index * 100); // Stagger the animation
             });
-            btnText.textContent = 'Show Less';
+            btnText.textContent = 'Show Less Services';
             expandBtn.classList.add('expanded');
             isExpanded = true;
         } else {
@@ -149,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function() {
             hiddenServices.forEach(service => {
                 service.classList.remove('show');
             });
-            btnText.textContent = 'View All Services';
+            btnText.textContent = 'Check out my services';
             expandBtn.classList.remove('expanded');
             isExpanded = false;
 

@@ -12,6 +12,87 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/chat.css' %}">
+
+    <style>
+        /* Global Sidebars Styles */
+        .social-sidebar {
+            position: fixed;
+            left: 20px;
+            bottom: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-sidebar .social-icon {
+            display: block;
+            color: #b0b0b0;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-sidebar .social-icon:hover {
+            color: #007bff;
+            transform: translateY(-3px);
+        }
+
+        .social-sidebar::after {
+            content: '';
+            width: 1px;
+            height: 100px;
+            background-color: #b0b0b0;
+            margin-top: 20px;
+        }
+
+        .email-sidebar {
+            position: fixed;
+            right: 20px;
+            bottom: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .email-link {
+            writing-mode: vertical-rl;
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .email-link:hover {
+            color: #007bff;
+            transform: translateY(-3px);
+        }
+
+        .email-sidebar::after {
+            content: '';
+            width: 1px;
+            height: 100px;
+            background-color: #b0b0b0;
+        }
+
+        /* Hide sidebars on mobile and small screens */
+        @media (max-width: 768px) {
+            .social-sidebar,
+            .email-sidebar {
+                display: none;
+            }
+        }
+
+        /* Hide sidebars when chat is open to avoid overlap */
+        .chat-overlay-active .social-sidebar,
+        .chat-overlay-active .email-sidebar {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Splash Screen -->
@@ -21,6 +102,27 @@
 
     <!-- Main Content -->
     <div id="mainContent" class="d-none">
+        <!-- Left Social Sidebar -->
+        <div class="social-sidebar">
+            <a href="https://github.com/usanaphtal112" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/naphtal112/" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://t.me/awisdomman" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/usa-naphtal/" class="social-icon" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+
+        <!-- Right Email Sidebar -->
+        <div class="email-sidebar">
+            <a href="mailto:usa.naphtal@gmail.com" class="email-link">usa.naphtal@gmail.com</a>
+        </div>
+
         <!-- Navbar -->
         <header>
             {% block navbar %}
@@ -38,7 +140,7 @@
             {% endfor %}
         </div>
 
-        <!-- Chat Button - MOVED BEFORE MAIN CONTENT -->
+        <!-- Chat Button -->
         <div class="chat-button">
             <i class="bi bi-chat-dots"></i>
         </div>
@@ -78,6 +180,27 @@
                 document.getElementById('splashScreen').classList.add('d-none');
                 document.getElementById('mainContent').classList.remove('d-none');
             }
+
+            // Handle chat overlay to hide sidebars when chat is active
+            const chatButton = document.querySelector('.chat-button');
+            const body = document.body;
+
+            if (chatButton) {
+                chatButton.addEventListener('click', function() {
+                    // Toggle chat overlay class
+                    body.classList.toggle('chat-overlay-active');
+                });
+            }
+
+            // Close chat overlay when clicking outside chat
+            document.addEventListener('click', function(e) {
+                const chatWindow = document.querySelector('.chat-window');
+                const chatButton = document.querySelector('.chat-button');
+
+                if (chatWindow && !chatWindow.contains(e.target) && !chatButton.contains(e.target)) {
+                    body.classList.remove('chat-overlay-active');
+                }
+            });
         });
     </script>
     {% block extra_js %}{% endblock %}
