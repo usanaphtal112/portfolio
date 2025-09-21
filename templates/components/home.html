@@ -32,18 +32,10 @@
                     </div>
                     {% endif %}
                     <div class="project-actions">
-                        <button class="btn-action btn-primary-action"
-                                data-bs-toggle="modal"
-                                data-bs-target="#contactModal"
-                                data-project="{{ project.title }}"
-                                style="background:#007bff;color:#ffffff;">
-                            <i class="bi bi-chat-dots"></i>
-                            Contact Me
-                        </button>
                         {% if project.testLink and project.testLink != "#" %}
+
                         <a href="{{ project.testLink }}" target="_blank" rel="noopener noreferrer"
-                           class="btn-action btn-secondary-action"
-                           style="color:#007bff;border:2px solid #007bff;">
+                            class="btn-action btn-secondary-action">
                             <i class="bi bi-eye"></i>
                             Live Demo
                         </a>
@@ -62,7 +54,7 @@
         </div>
         {% endfor %}
         <div class="view-more-projects" style="text-align:center; margin-top:2rem;">
-            <a href="{% url 'project_work' %}" class="btn-action btn-secondary-action" style="color:#007bff;border:2px solid #007bff;">View More Projects</a>
+            <a href="{% url 'project_work' %}" class="btn-action btn-secondary-action">View More Projects</a>
         </div>
     </section>
 </div>

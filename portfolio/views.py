@@ -42,8 +42,23 @@ class ProjectListView(TemplateView):
         return context
 
 
-class ResumeView(TemplateView):
-    template_name = "pages/resume.html"
+# class ResumeView(TemplateView):
+#     template_name = "pages/resume.html"
+
+
+from django.http import FileResponse
+import os
+
+
+class ResumeView(View):
+    def get(self, request, *args, **kwargs):
+        # Locate the file
+        file_path = os.path.join(settings.BASE_DIR, "static", "documents", "resume.pdf")
+
+        # Open as binary and return as FileResponse
+        response = FileResponse(open(file_path, "rb"), content_type="application/pdf")
+        response["Content-Disposition"] = 'attachment; filename="resume.pdf"'
+        return response
 
 
 class AboutMeView(TemplateView):
