@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Add follow-up suggestions after first message
                 if (messageCount === 1) {
                     setTimeout(() => {
-                        appendMessage("💡 You can ask me about:\n• My projects and experience\n• Technical skills\n• Collaboration opportunities\n• You want to Hire me Or anything else!", 'bot');
+                        appendMessage("💡Please wait a moment for a reply—don’t close this chat tab.", 'bot');
                     }, 1500);
                 }
             } else {

@@ -91,7 +91,7 @@
   },
   {
     "title": "Data Analysis - COVID-19 Analysis Report",
-    "image": "images/covid-19-analysis-report.png",
+    "image": "images/covid-19-analysis-report0.png",
     "description": "A comprehensive data analysis platform providing insights into the global COVID-19 pandemic. Aggregates and analyzes data from various reliable sources to facilitate informed decision-making and track pandemic trends.",
     "tools": ["Excel", "Power BI"],
     "category": "Data Analysis",
